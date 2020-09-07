@@ -27,7 +27,7 @@ class Index extends Component {
         
         return (
             <div className="container">
-                <h1>React Tutorial</h1>
+                <h1>React Tutorial App</h1>
                 <p>Add a character with a name and a job to the table.</p>
                 <Table
                     characterData={characters}
