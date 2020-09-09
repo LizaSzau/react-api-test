@@ -8,7 +8,7 @@ class App extends Component {
   // Code is invoked after the component is mounted/inserted into the DOM tree.
   componentDidMount() {
     const url =
-      'https://vividdarer.eu/api/product/read.php'
+      'https://oszirozsa.hu/product/read.php';
 
     fetch(url)
       .then((result) => result.json())
