@@ -1,12 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.sass';
+import Api from './index/Api';
 import Index from './index/Index.js';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <React.StrictMode>
     <Index />
+	//<Api />
   </React.StrictMode>,
   document.getElementById('root')
 );

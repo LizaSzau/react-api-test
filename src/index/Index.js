@@ -27,8 +27,8 @@ class Index extends Component {
         
         return (
             <div className="container">
-                <h1>React Tutorial App</h1>
-                <p>Add a character with a name and a job to the table.</p>
+                <h1>Products List</h1>
+                <p>Node.js and REST API demo</p>
                 <Table
                     characterData={characters}
                     removeCharacter={this.removeCharacter}
