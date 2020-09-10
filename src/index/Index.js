@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
 import './index.sass';
 import Table from './Table';
-import Form from './Form';
 import { trackPromise } from 'react-promise-tracker';
 
 class Index extends Component {

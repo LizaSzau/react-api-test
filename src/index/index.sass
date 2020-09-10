@@ -4,23 +4,16 @@ table
 	width: 100%
 	
 table tr td:nth-child(2)
-	width: 100px
+	text-align: right
 
 table tr td:last-child
 	text-align: right
-	min-width: 280px
-	
-label
-	font-weight: bold
-	
-input
-	width: 100%
-	margin: 10px 0 20px 0
-	padding: 10px
+	min-width: 350px
 	
 .container
 	max-width: 700px
 	margin: 0 auto
+	padding: 0 20px
 
 button
 	margin-left: 10px
@@ -29,5 +22,72 @@ button
 	color: $color-3
 	font-size: 14px
 	
+//******************************************************************************
+// MEDIA QUERY
+//******************************************************************************
+
+@media screen and (max-width: 600px) 
+	.container
+		max-width: 100%
+		
+	table, thead, tbody, th, td, tr 
+		display: block
+		padding: 0
+		margin: 0
+		text-align: left
 	
+	thead tr 
+		position: absolute
+		top: -9999px
+		left: -9999px
+
+	tr:first-child
+		border-top: 1px solid $color-2 
+		margin-top: 20px
+		
+	tr
+		border-bottom: 1px solid $color-2 
+		padding: 10px 0
 	
+	td 
+		border: none
+		position: relative
+		padding: 5px 0 5px 90px 
+		text-align: left
+		min-width: auto
+		
+	table tr td:nth-child(2)
+		text-align: left
+	
+	.number-format
+		text-align: left
+	
+	td:before  
+		position: absolute
+		top: 0
+		left: 0
+		width: 0
+		padding: 5px 20px 5px 0
+		white-space: nowrap
+		font-weight: bold
+	
+	td:nth-of-type(1):before  
+		content: "Product:" 
+		
+	td:nth-of-type(2):before  
+		content: "Price:" 
+		
+	td:nth-of-type(3)
+		padding: 10px 0 0 0
+		
+@media screen and (max-width: 500px) 
+	.container
+		padding: 0 10px
+		
+	table tr td:nth-child(3)
+		button:first-child
+			margin: 0
+			padding: 10px
+			
+	table tr td:last-child
+		min-width: 320px

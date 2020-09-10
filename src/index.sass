@@ -39,6 +39,7 @@ td, th
 	
 th 
 	border-top: 1px solid $color-2
+	
 table
 	margin: 30px auto
 	border-spacing: 0px
@@ -65,9 +66,20 @@ button
 	background: inherit
 	border: none
 	text-align: right
+	width: 80px
 
+.align-right
+	text-align: right
+	
 button.btn-edit
 	background: $color-5
+	&:hover
+		transition: all 0.5s ease
+		background: $color-6
 	
 button.btn-delete
-	background: crimson
+	background: $color-7
+	&:hover
+		transition: all 0.5s ease
+		background: $color-8
+		

@@ -1,7 +1,7 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import './index.sass';
 import './loader.sass';
+import ReactDOM from 'react-dom';
 import Index from './index/Index.js';
 import * as serviceWorker from './serviceWorker';
 
