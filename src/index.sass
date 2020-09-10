@@ -19,14 +19,16 @@
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
+	font-family: verdana
+	font-size: 16px
 	
 body
 	background: $color-1
-	font-family: verdana
 	
 h1, h2
 	color: $color-3
 	padding: 20px 0
+	font-size: 48px
 	
 td, th
 	border-bottom: 1px solid $color-2
@@ -35,6 +37,8 @@ td, th
 	padding: 10px 0
 	text-align: left
 	
+th 
+	border-top: 1px solid $color-2
 table
 	margin: 30px auto
 	border-spacing: 0px
@@ -60,5 +64,10 @@ button
 .number-format
 	background: inherit
 	border: none
-	font-size: inherit
 	text-align: right
+
+button.btn-edit
+	background: $color-5
+	
+button.btn-delete
+	background: crimson

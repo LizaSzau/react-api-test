@@ -32,7 +32,7 @@ const TableHeader = () => {
 			<tr>
 				<th>Product</th>
 				<th>Price</th>
-				<td></td>
+				<th></th>
 			</tr>
 		</thead>
 	)
@@ -50,8 +50,8 @@ const TableBody = (props) => {
 					<NumberFormat className={"number-format"} value={row.price} thousandSeparator={true} prefix={'$'} />
 				</td>
 				<td>
-					<button onClick={() => props.removeCharacter(index)}>Delete</button>
-					<button className={"btn-edit"} onClick={() => props.removeCharacter(index)}>Delete</button>
+					<button onClick={() => props.removeCharacter(index)}>View</button>
+					<button className={"btn-edit"} onClick={() => props.removeCharacter(index)}>Edit</button>
 					<button className={"btn-delete"} onClick={() => props.removeCharacter(index)}>Delete</button>
 				</td>
 			</tr>

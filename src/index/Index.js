@@ -44,7 +44,6 @@ class Index extends Component {
         return (
             <div className="container">
                 <h1>Products</h1>
-                <p>ReactJS and REST API demo.</p>
                 <Table
                     characterData={characters}
                     removeCharacter={this.removeCharacter}
