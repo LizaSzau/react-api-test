@@ -2,11 +2,27 @@ import React, {Component} from 'react'
 import './index.sass';
 import Table from './Table';
 import Form from './Form';
-//import {characters} from './data.js';
+import { trackPromise } from 'react-promise-tracker';
 
 class Index extends Component {
-	state = {characters: []} 
-	//state = {characters} 
+	state = {
+		characters: [],
+	}
+	
+	componentDidMount() {
+		const url = 'https://oszirozsa.hu/product/read.php';
+
+		trackPromise(
+		
+			fetch(url)
+				.then((result) => result.json())
+				.then((result) => {
+					this.setState ({
+						characters: result,
+					})
+				}) 
+			);
+	}
 	
 	removeCharacter = (index) => {
 		const {characters} = this.state
@@ -24,17 +40,17 @@ class Index extends Component {
 	
     render() {
         const { characters } = this.state;
-        
+    
         return (
             <div className="container">
-                <h1>Products List</h1>
-                <p>Node.js and REST API demo</p>
+                <h1>Products</h1>
+                <p>ReactJS and REST API demo.</p>
                 <Table
                     characterData={characters}
                     removeCharacter={this.removeCharacter}
                 />
-                <h2>Add new</h2>
-                <Form handleSubmit={this.handleSubmit} />
+                {/* <h2>Add new</h2> */}
+				{/* <Form handleSubmit={this.handleSubmit} /> */}
             </div>
         )
 	}

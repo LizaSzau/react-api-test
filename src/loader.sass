@@ -1,0 +1,27 @@
+@import 'colors'
+
+$color-loader: rgba(32,178,170, 0.2)
+
+.loader-1
+  width: 20px
+  height: 20px
+  border-radius: 50%
+  position: relative
+  animation: loader-1-ani 1s linear alternate infinite
+  top: 50%
+  margin: -50px auto 0
+
+
+@keyframes loader-1-ani
+	0% 
+		box-shadow: -60px 40px 0 2px $color-3, -30px 40px 0 0 $color-loader, 0 40px 0 0 $color-loader, 30px 40px 0 0 $color-loader, 60px 40px 0 0 $color-loader
+	25% 
+		box-shadow: -60px 40px 0 0 $color-loader, -30px 40px 0 2px $color-3, 0 40px 0 0 $color-loader, 30px 40px 0 0 $color-loader, 60px 40px 0 0 $color-loader
+	50% 
+		box-shadow: -60px 40px 0 0 $color-loader, -30px 40px 0 0 $color-loader, 0 40px 0 2px $color-3, 30px 40px 0 0 $color-loader, 60px 40px 0 0 $color-loader
+	75% 
+		box-shadow: -60px 40px 0 0 $color-loader, -30px 40px 0 0 $color-loader, 0 40px 0 0 $color-loader, 30px 40px 0 2px $color-3, 60px 40px 0 0 $color-loader
+	100% 
+		box-shadow: -60px 40px 0 0 $color-loader, -30px 40px 0 0 $color-loader, 0 40px 0 0 $color-loader, 30px 40px 0 0 $color-loader, 60px 40px 0 2px $color-3
+
+	

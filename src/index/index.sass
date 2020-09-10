@@ -1,11 +1,14 @@
+@import '../colors'
+
 table
 	width: 100%
-
-td
-	width: 50%
 	
+table tr td:nth-child(2)
+	width: 70px
+
 table tr td:last-child
 	text-align: right
+	min-width: 280px
 	
 label
 	font-weight: bold
@@ -18,4 +21,10 @@ input
 .container
 	max-width: 600px
 	margin: 0 auto
+
+button
+	margin-left: 10px
 	
+.text-category
+	color: $color-3
+	font-size: 14px

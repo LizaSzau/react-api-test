@@ -1,4 +1,4 @@
-export   const characters = [
+/*export   const characters = [
     {
 		name: 'Charlie',
         job: 'Janitor',
@@ -19,4 +19,16 @@ export   const characters = [
 	
 export default {
     characters,
+}*/
+
+import React, { Component } from "react";
+
+async function charactersJson () 
+{
+	const url = 'https://oszirozsa.hu/product/read.php';
+    const res = await fetch(url);
+    const json = await res.json();
+	
+	//alert(JSON.stringify(json))
+    return json;
 }
