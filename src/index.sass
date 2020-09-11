@@ -30,12 +30,15 @@ button
 	outline: none
 	border: none 
 	&:hover
-		transition: all 0.5s ease
 		background: $color-4
+		
+*:hover, button, a
+	@extend %trans-effect
 		
 .container-main
 	max-width: 720px
 	margin: 0 auto 40px auto
+	overflow: hidden
 	.container
 		@extend %rounded
 		@extend %shadow

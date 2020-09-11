@@ -2,12 +2,14 @@ import React from 'react';
 import './index.sass';
 import './loader.sass';
 import ReactDOM from 'react-dom';
-import Index from './index/Index.js';
+import ProductsList from './products/products-list.js';
+import Menu from './app/menu.js';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
 	<React.StrictMode>
-		<Index />
+		<Menu />
+		<ProductsList />
 	</React.StrictMode>,
 	
 	document.getElementById('root')

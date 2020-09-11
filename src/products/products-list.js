@@ -1,9 +1,9 @@
 import React, {Component} from 'react'
-import './index.sass';
-import Table from './Table';
+import './products-list.sass';
+import Table from './products-list-table';
 import { trackPromise } from 'react-promise-tracker';
 
-class Index extends Component {
+class ProductsList extends Component {
 	state = {
 		characters: [],
 	}
@@ -42,7 +42,7 @@ class Index extends Component {
     
         return (
             <div className="container-main">
-                <h1>Products</h1>
+                <h1>Products list</h1>
 				<div className="container">
 					<Table
 						characterData={characters}
@@ -57,4 +57,4 @@ class Index extends Component {
 
 }
 
-export default Index;
+export default ProductsList;
