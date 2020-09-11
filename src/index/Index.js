@@ -41,14 +41,16 @@ class Index extends Component {
         const { characters } = this.state;
     
         return (
-            <div className="container">
+            <div className="container-main">
                 <h1>Products</h1>
-                <Table
-                    characterData={characters}
-                    removeCharacter={this.removeCharacter}
-                />
-                {/* <h2>Add new</h2> */}
-				{/* <Form handleSubmit={this.handleSubmit} /> */}
+				<div className="container">
+					<Table
+						characterData={characters}
+						removeCharacter={this.removeCharacter}
+					/>
+					{/* <h2>Add new</h2> */}
+					{/* <Form handleSubmit={this.handleSubmit} /> */}
+				</div>
             </div>
         )
 	}

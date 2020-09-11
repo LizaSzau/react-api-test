@@ -1,17 +1,5 @@
 @import 'colors'
-
-%rounded
-	-moz-border-radius: 5px
-	-webkit-border-radius: 5px
-	border-radius: 5px
-	
-%no-select 
-	-webkit-touch-callout: none
-	-webkit-user-select: none
-	-khtml-user-select: none
-	-moz-user-select: none
-    -ms-user-select: none
-    user-select: none
+@import 'mixins'
 	
 *
 	margin: 0
@@ -22,51 +10,50 @@
 	font-family: verdana
 	font-size: 16px
 	
-body
+body, html
 	background: $color-1
+	color: $color-11
+	height: 100%
 	
 h1, h2
 	color: $color-3
 	padding: 20px 0
 	font-size: 48px
 	
-td, th
-	border-bottom: 1px solid $color-2
-	
-td, th
-	padding: 10px 0
-	text-align: left
-	
-th 
-	border-top: 1px solid $color-2
-	
-table
-	margin: 30px auto
-	border-spacing: 0px
-    border-collapse: collapse
-	
 button
 	@extend %rounded
 	@extend %no-select
 	color: $color-1
 	background: $color-3
-	padding: 10px 20px
+	padding: 10px
 	cursor: pointer
 	outline: none
 	border: none 
 	&:hover
 		transition: all 0.5s ease
 		background: $color-4
-	
+		
+.container-main
+	max-width: 720px
+	margin: 0 auto 40px auto
+	.container
+		@extend %rounded
+		@extend %shadow
+		background: $color-10
+		padding: 20px
+		margin-top: 20px
+		
 .loader-top
 	padding: 50px 0
 	text-align: center
 	
 .number-format
 	background: inherit
+	color: inherit
 	border: none
 	text-align: right
 	width: 80px
+	height: 100%
 
 .align-right
 	text-align: right

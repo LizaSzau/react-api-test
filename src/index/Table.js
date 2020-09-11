@@ -17,48 +17,53 @@ const Table = (props) => {
 
   return (
 		<div>
-		<LoadingIndicator/>
-		<table>
 			<TableHeader />
+			<LoadingIndicator/>
 			<TableBody characterData={characterData} removeCharacter={removeCharacter} />
-		</table>
 		</div>
 	)
 }
 
 const TableHeader = () => {
 	return (
-		<thead>
-			<tr>
-				<th>Product</th>
-				<th className={"align-right"}>Price</th>
-				<th></th>
-			</tr>
-		</thead>
+		<div className={"flex-container"}>
+			<div>Product</div>
+			<div className={"align-right"}>Price</div>
+			<div></div>
+		</div>
 	)
 }
 
 const TableBody = (props) => {
 	const rows = props.characterData.map((row, index) => {
 		return (
-			<tr key = {index}>
-				<td>
-					{row.name}
-					<div className={"text-category"} >{row.category_name}</div>
-				</td>
-				<td >
-					<NumberFormat className={"number-format"} value={row.price} thousandSeparator={true} prefix={'$'} />
-				</td>
-				<td>
+			<div className={"flex-container"} key = {index}>
+				<div>
+					<div>
+						<div className={"field-name"}>Product:</div>
+						<div>{row.name}</div>
+					</div>
+					<div>
+						<div className={"field-name"}>Category:</div>
+						<div className={"text-category"} >{row.category_name}</div>
+					</div>
+				</div>
+				<div>
+					<div>
+						<div className={"field-name"}>Price:</div>
+						<div><NumberFormat className={"number-format"} value={row.price} thousandSeparator={true} prefix={'$'} /></div>
+					</div>
+				</div>
+				<div>
 					<button onClick={() => props.removeCharacter(index)}><i className={"fas fa-eye"}></i> View</button>
 					<button className={"btn-edit"} onClick={() => props.removeCharacter(index)}><i className={"fas fa-edit"}></i> Edit</button>
 					<button className={"btn-delete"} onClick={() => props.removeCharacter(index)}><i className={"fas fa-trash"}></i> Delete</button>
-				</td>
-			</tr>
+				</div>
+			</div>
 		)
 	})
 	
-	return <tbody>{rows}</tbody>
+	return rows
 }
 
 export default Table

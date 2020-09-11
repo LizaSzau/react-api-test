@@ -1,19 +1,38 @@
 @import '../colors'
+@import '../mixins'
 
-table
-	width: 100%
-	
-table tr td:nth-child(2)
-	text-align: right
+.flex-container
+	display: flex
+	padding: 15px 0
+	border-bottom: 1px solid $color-2
+	display: -webkit-flex; 
+	& > div:first-child
+		width: 100%
+	& > div:nth-child(2)
+		text-align: right
+		min-width: 100px
+		padding-right: 10px
+	& > div:nth-child(3)
+		min-width: 280px;
+		margin: auto
 
-table tr td:last-child
-	text-align: right
-	min-width: 350px
+.field-name
+	display: none
 	
-.container
-	max-width: 700px
-	margin: 0 auto
-	padding: 0 20px
+.flex-container:first-child
+	@extend %rounded-top
+	position: relative
+	background: $color-12
+	font-weight: bold
+	color: $color-9
+	border: 0
+	padding-left: 20px
+	left: -20px
+	top: -20px
+	width: calc(100%  + 40px)
+	& > div:nth-child(3)
+		min-width: 300px;
+	
 
 button
 	margin-left: 10px
@@ -23,75 +42,86 @@ button
 	font-size: 14px
 	
 //******************************************************************************
-// MEDIA QUERY
+// MEDIA QUERY - MAX 760
 //******************************************************************************
 
-@media screen and (max-width: 600px) 
-	.container
-		max-width: 100%
+@media screen and (max-width: 760px) 
 		
-	table, thead, tbody, th, td, tr 
-		display: block
-		padding: 0
-		margin: 0
-		text-align: left
+	%rounded-no
+		-moz-border-radius: 0
+		-webkit-border-radius: 0
+		border-radius: 0
+		
+	%shadow-no
+		box-shadow: none
 	
-	thead tr 
-		position: absolute
-		top: -9999px
-		left: -9999px
+	.container-main,
+		padding: 0 10px
+		.container
+			width: 100%
+			@extend %rounded-no
+			@extend %shadow-no
+			
+	.flex-container:first-child
+		@extend %rounded-no
+		
+//******************************************************************************
+// MEDIA QUERY - MAX 560
+//******************************************************************************
 
-	tr:first-child
-		border-top: 1px solid $color-2 
-		margin-top: 20px
-		
-	tr
-		border-bottom: 1px solid $color-2 
-		padding: 10px 0
+@media screen and (max-width: 700px) 
+
+	.flex-container:first-child
+		display: none
 	
-	td 
-		border: none
-		position: relative
-		padding: 5px 0 5px 90px 
-		text-align: left
-		min-width: auto
+	.flex-container
+		display: block
+		& > div:first-child > div:first-child
+			display: flex
+			div:first-of-type
+				min-width: 100px
+			div:not(:first-of-type)
+				padding: 5px 0
+		& > div:first-child
+			div:nth-child(2) > div:first-child
+				float: left
+		& > div > div div
+				padding: 5px 10px
+		& > div:first-child > div
+			width: 100%
+			float: left
+		& > div:nth-child(2)
+			div:first-child > div
+				text-align: left
+			div:first-child > div:first-child
+				float: left
+		& > div:nth-child(3)
+			text-align: right
+			padding-top: 20px
+
 		
-	table tr td:nth-child(2)
-		text-align: left
-	
+	.field-name
+		display: block
+		width: 100px
+		background: $color-12
+		margin-right: 10px
+		color: $color-9
+
 	.number-format
 		text-align: left
-	
-	td:before  
-		position: absolute
-		top: 0
-		left: 0
-		width: 0
-		padding: 5px 20px 5px 0
-		white-space: nowrap
-		font-weight: bold
-	
-	td:nth-of-type(1):before  
-		content: "Product:" 
-		color: $color-9
-		font-weight: normal
 		
-	td:nth-of-type(2):before  
-		content: "Price:" 
-		color: $color-9
-		font-weight: normal
-		
-	td:nth-of-type(3)
-		padding: 10px 0 0 0
-		
-@media screen and (max-width: 500px) 
-	.container
-		padding: 0 10px
-		
-	table tr td:nth-child(3)
-		button:first-child
-			margin: 0
-			padding: 10px
-			
-	table tr td:last-child
-		min-width: 320px
+//******************************************************************************
+// MEDIA QUERY - MAX 455
+//******************************************************************************
+
+@media screen and (max-width: 455px) 
+
+	.flex-container
+		& > div:nth-child(3)
+			display: flex
+			justify-content: space-between
+			button
+				margin-left: 0
+				width: 30%
+
+
