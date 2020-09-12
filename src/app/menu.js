@@ -9,8 +9,8 @@ class Menu extends Component {
 				<div className="menu-main">
 					<ul>
 					  <li>Admin menu</li>
-					  <li><a href="" className="active">Products</a></li>
-					  <li><a href="">Categories</a></li>
+					  <li><a href="x" className="active">Products</a></li>
+					  <li><a href="x">Categories</a></li>
 					</ul>
 				</div>
             </div>

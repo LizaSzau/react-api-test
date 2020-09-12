@@ -1,9 +1,9 @@
 @import '../colors'
 @import '../mixins'
-@import '../index'
 
 .container-main-menu
-	@extend .container-main
+	max-width: 720px
+	margin: 0 auto 40px auto
 	@extend %shadow 
 	@extend %rounded-bottom
 	background-color: $color-13
@@ -32,3 +32,29 @@
 	.active
 		background: $color-3
 	
+/******************************************************************************/
+/* MEDIA QUERY - MAX 760 */
+/******************************************************************************/
+
+@media screen and (max-width: 760px) 
+
+	.container-main-menu
+		margin-left: 10px
+		margin-right: 10px
+		
+/******************************************************************************/
+/* MEDIA QUERY - MAX 700 */
+/******************************************************************************/
+
+@media screen and (max-width: 700px) 
+
+	%rounded-no
+		-moz-border-radius: 0
+		-webkit-border-radius: 0
+		border-radius: 0
+		
+	.container-main-menu
+		width: 100%
+		margin-left: 0
+		margin-right: 0
+		@extend %rounded-no

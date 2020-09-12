@@ -40,13 +40,13 @@ button
 .text-category
 	color: $color-3
 	font-size: 14px
-	
-//******************************************************************************
-// MEDIA QUERY - MAX 760
-//******************************************************************************
-
-@media screen and (max-width: 760px) 
 		
+/******************************************************************************/
+/* MEDIA QUERY - MAX 700 */
+/******************************************************************************/
+
+@media screen and (max-width: 700px) 
+
 	%rounded-no
 		-moz-border-radius: 0
 		-webkit-border-radius: 0
@@ -54,23 +54,15 @@ button
 		
 	%shadow-no
 		box-shadow: none
-	
-	.container-main,
-		padding: 0 10px
+		
+	.container-main
 		.container
 			width: 100%
-			@extend %rounded-no
 			@extend %shadow-no
 			
 	.flex-container:first-child
 		@extend %rounded-no
 		
-//******************************************************************************
-// MEDIA QUERY - MAX 560
-//******************************************************************************
-
-@media screen and (max-width: 700px) 
-
 	.flex-container:first-child
 		display: none
 	
@@ -98,21 +90,20 @@ button
 		& > div:nth-child(3)
 			text-align: right
 			padding-top: 20px
-
-		
+			
 	.field-name
 		display: block
 		width: 100px
 		background: $color-12
 		margin-right: 10px
 		color: $color-9
-
-	.number-format
-		text-align: left
 		
-//******************************************************************************
-// MEDIA QUERY - MAX 455
-//******************************************************************************
+	.number-format
+		text-align: left 
+		
+/******************************************************************************/
+/* MEDIA QUERY - MAX 455 */
+/******************************************************************************/
 
 @media screen and (max-width: 455px) 
 
