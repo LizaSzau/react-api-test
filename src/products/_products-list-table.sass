@@ -1,0 +1,137 @@
+.container-products-list-table
+	.flex-container
+		display: flex
+		padding: 15px 0
+		border-bottom: 1px solid $color-2
+		display: -webkit-flex; 
+		& > div:first-child
+			width: 100%
+		& > div:nth-child(2)
+			text-align: right
+			min-width: 100px
+			padding-right: 10px
+		& > div:nth-child(3)
+			min-width: 280px;
+			margin: auto
+
+	.field-name
+		display: none
+		
+	.flex-container:first-child
+		@extend %rounded-top
+		position: relative
+		background: $color-12
+		font-weight: bold
+		color: $color-9
+		border: 0
+		padding-left: 20px
+		left: -20px
+		top: -20px
+		width: calc(100%  + 40px)
+		& > div:nth-child(3)
+			min-width: 300px;
+		.fas
+			cursor: pointer
+			&:hover
+				color: $color-3
+			font-size: 20px
+			padding-left: 5px
+			&.blue	
+				color: $color-3
+		
+	.table-head
+		@extend .flex-container
+		background: red
+		
+	button
+		margin-left: 10px
+		
+	.text-category
+		color: $color-3
+		font-size: 14px
+		
+	.paging
+		display: flex
+		flex-wrap: wrap
+		width: calc(100% + 20px)
+		left: -10px
+		position: relative
+		button
+			background: $color-14
+			color: $color-9
+			height: 30px
+			width: 30px
+			padding: 0
+			color: $color-10
+			margin-top: 20px
+
+		& .current-page-yes
+			background: $color-3
+			
+/******************************************************************************/
+/* MEDIA QUERY - MAX 700 */
+/******************************************************************************/
+
+@media screen and (max-width: 700px) 
+
+	.container-products-list-table
+		.flex-container:first-child
+			display: none
+		
+		.flex-container
+			display: block
+			& > div:first-child > div:first-child
+				display: flex
+				div:first-of-type
+					min-width: 100px
+				div:not(:first-of-type)
+					padding: 5px 0
+			& > div:first-child
+				div:nth-child(2) > div:first-child
+					float: left
+			& > div > div div
+					padding: 5px 10px
+			& > div:first-child > div
+				width: 100%
+				float: left
+			& > div:nth-child(2)
+				div:first-child > div
+					text-align: left
+				div:first-child > div:first-child
+					float: left
+			& > div:nth-child(3)
+				text-align: right
+				padding-top: 20px
+				
+		.field-name
+			display: block
+			width: 100px
+			background: $color-12
+			margin-right: 10px
+			color: $color-9
+			
+		.number-format
+			text-align: left 
+		
+/******************************************************************************/
+/* MEDIA QUERY - MAX 455 */
+/******************************************************************************/
+
+@media screen and (max-width: 455px) 
+
+	.container-products-list-table
+		.flex-container
+			& > div:nth-child(3)
+				display: flex
+				justify-content: space-between
+				button
+					margin-left: 0
+					width: 30%
+					padding-left: 5px
+					padding-right: 5px
+				button:first-of-type
+					width: 100px
+					min-width: 100px
+				
+
+

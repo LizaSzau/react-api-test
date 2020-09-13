@@ -13,14 +13,15 @@ const LoadingIndicator = props => {
 }
 
 const Table = (props) => {
-  const {characterData, removeCharacter} = props
+  const {productsData, pagingData} = props
 
   return (
-		<div>
-			<TableHeader />
-			<LoadingIndicator/>
-			<TableBody characterData={characterData} removeCharacter={removeCharacter} />
-		</div>
+	<div className={"container-products-list-table"}>
+		<TableHeader />
+		<LoadingIndicator/>
+		<TableBody productsData = {productsData} />
+		<Paging pagingData = {pagingData} />
+	</div>
 	)
 }
 
@@ -35,13 +36,14 @@ const TableHeader = () => {
 }
 
 const TableBody = (props) => {
-	const rows = props.characterData.map((row, index) => {
+	const rows = props.productsData.map((row, index) => {
 		return (
 			<div className={"flex-container"} key = {index}>
 				<div>
 					<div>
 						<div className={"field-name"}>Product:</div>
 						<div>{row.name}</div>
+						<div>{row.url}</div>
 					</div>
 					<div>
 						<div className={"field-name"}>Category:</div>
@@ -64,6 +66,20 @@ const TableBody = (props) => {
 	})
 	
 	return rows
+}
+
+
+const Paging = (props) => {
+	const rows = props.pagingData.map((row, index) => {
+		return (
+			<button key = {index} className={`current-page-${row.current_page}`}>{row.page}</button>
+		)
+	})
+	
+	
+	return ( 
+		<div className="paging">{rows}</div> 
+	)
 }
 
 export default Table

@@ -1,15 +1,17 @@
 import React, {Component} from 'react'
 import './products-list.sass';
 import Table from './products-list-table';
+import Bar from './products-list-bar';
 import { trackPromise } from 'react-promise-tracker';
 
 class ProductsList extends Component {
 	state = {
-		characters: [],
+		products: [],
+		paging: [],
 	}
 	
 	componentDidMount() {
-		const url = 'https://oszirozsa.hu/product/read.php';
+		const url = 'https://oszirozsa.hu/product/read_paging.php';
 
 		trackPromise(
 		
@@ -17,12 +19,14 @@ class ProductsList extends Component {
 				.then((result) => result.json())
 				.then((result) => {
 					this.setState ({
-						characters: result,
+						products: result.records,
+						paging: result.paging,
 					})
 				}) 
-			);
+		);
 	}
 	
+	/*
 	removeCharacter = (index) => {
 		const {characters} = this.state
 
@@ -36,20 +40,18 @@ class ProductsList extends Component {
     handleSubmit = character => {
         this.setState({characters: [...this.state.characters, character]});
     }
+	*/
 	
     render() {
-        const { characters } = this.state;
-    
+        const { products } = this.state;
+        const { paging } = this.state;
+
         return (
             <div className="container-main">
                 <h1>Products list</h1>
+				<Bar />
 				<div className="container">
-					<Table
-						characterData={characters}
-						removeCharacter={this.removeCharacter}
-					/>
-					{/* <h2>Add new</h2> */}
-					{/* <Form handleSubmit={this.handleSubmit} /> */}
+					<Table productsData={ products } pagingData = { paging } />
 				</div>
             </div>
         )

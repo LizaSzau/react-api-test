@@ -3,12 +3,12 @@ import './index.sass';
 import './loader.sass';
 import ReactDOM from 'react-dom';
 import ProductsList from './products/products-list.js';
-import Menu from './app/menu.js';
+import MenuMain from './app/menu-main.js';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
 	<React.StrictMode>
-		<Menu />
+		<MenuMain />
 		<ProductsList />
 	</React.StrictMode>,
 	

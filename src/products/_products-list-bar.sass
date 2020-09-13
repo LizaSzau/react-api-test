@@ -1,0 +1,44 @@
+.container-products-list-bar
+	.bar-flex
+		display: flex
+		justify-content: space-between;
+	input[type=text] 
+		padding: 10px
+		border: 1px solid $color-3
+		float: left
+		width: 300px
+		-moz-border-radius: 5px 0 0 5px
+		-webkit-border-radius: 5px 0 0 5px
+		border-radius: 5px 0 0 5px
+		outline: none 
+		&:focus 
+			background: $color-1
+    
+	.search
+		button
+			float: left
+			width: $button-height
+			-moz-border-radius: 0 5px 5px 0
+			-webkit-border-radius: 0 5px 5px 0
+			border-radius: 0 5px 5px 0
+
+/******************************************************************************/
+/* MEDIA QUERY - MAX 600 */
+/******************************************************************************/
+
+@media screen and (max-width: 600px) 
+
+	.container-products-list-bar
+		.bar-flex
+			display: inline-block
+			width: 100%
+		.search
+			width: 100%
+		button
+			float: right
+			&:nth-child(1)
+				margin-top: 20px
+		input[type=text] 
+			width: calc(100% - 42px)
+
+				
