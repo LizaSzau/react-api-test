@@ -4,13 +4,14 @@ import {
 	BrowserRouter as Router,
 	Switch,
 	Route,
-	Link
+	Link,
+	NavLink,
 } 	from "react-router-dom";
 
 const MenuButton = (props) => {
 	return (
-		<li className={props.className} onClick={props.onClick}>
-			<Link to={'/' + props.route}>{props.name}</Link>
+		<li>
+			<NavLink to={'/' + props.route} activeClassName={'active-menu'}>{props.name}</NavLink>
 		</li>
 	);
 }
@@ -22,36 +23,12 @@ const menus = [
 ]
 
 class Menu extends Component {
-    constructor(){
-        super();
-        this.state = {
-			activeMenu: 0,
-        }
-		
-		this.handleClick = this.handleClick.bind(this);
-    }
-
-	handleClick(i) {
-		this.setState({
-			activeMenu: i,
-		})
-	}
-
-	renderMenuButton(i) {
-		let className = "inactive-menu"
-		
-		if (this.state.activeMenu === i) {
-			className = "active-menu"
-		} 
-				
+	renderMenuButton(i) {		
 		return (
 			<MenuButton 
 				key = {menus[i].id}
 				name = {menus[i].name}
 				route = {menus[i].route}
-				id = {menus[i].id}
-				onClick={() => this.handleClick(i)}
-				className = {className}
 			/>
 		);
 	}
