@@ -33,14 +33,14 @@ class Menu extends Component {
 
 	handleClick(i) {
 		this.setState({
-			activeMenu: i,
+			activeMenu: i 
 		})
 	}
 
 	renderMenuButton(i) {
-		let className = "inactive-menu"
+		let className = "button"
 		
-		if (this.state.activeMenu === i) {
+		if (this.state.activeMenu == i) {
 			className = "active-menu"
 		} 
 				
@@ -67,6 +67,7 @@ class Menu extends Component {
     render() {
         return (
 			<Router>
+				<div onClick={() => this.handleClick(2)}>MALAC</div>
 				<div className="container-menu-main">
 					<ul>
 						<li>Admin menu</li>
