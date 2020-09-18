@@ -30,6 +30,7 @@ class Menu extends Component {
     }
 
 	handleClick(i) {
+		alert (i)
 		this.setState({
 			activeMenu: i 
 		})
