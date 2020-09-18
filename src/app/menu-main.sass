@@ -1,6 +1,9 @@
 @import '../variables'
 @import '../mixins'
 
+.active-menu
+	background: $color-5
+
 .container-menu-main
 	max-width: 720px
 	margin: 0 auto 40px auto
@@ -15,20 +18,18 @@
 	li 
 		float: left
 		line-height: 60px
-		&:first-child
+		&:first-of-type
 			background: $color-12
 			color: $color-9
 			font-weight: bold
 			padding: 0 12px
+		&:hover
+			background: $color-14
 	li a 
 		display: block
 		padding: 0 12px
 		color: $color-10
 		text-decoration: none
-		&:hover
-			background: $color-14
-	.active
-		background: $color-3
 	
 /******************************************************************************/
 /* MEDIA QUERY - MAX 760 */
