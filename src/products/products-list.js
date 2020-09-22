@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import './products-list.sass';
-import Table from './products-list-table';
-import Bar from './products-list-bar';
+import Table from './products-list-table.jsx';
+import Bar from './products-list-bar.jsx';
 import { trackPromise } from 'react-promise-tracker';
 
 class ProductsList extends Component {
