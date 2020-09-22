@@ -10,17 +10,20 @@
 	font-family: verdana
 	font-size: 16px
 	
-html
-	margin-left: calc(100vw - 100%)
 body, html
 	background: $color-1
 	color: $color-11
 	height: 100%
 	
-h1, h2
+h1
 	color: $color-3
 	padding: 20px 0
 	font-size: 48px
+	
+h2
+	color: $color-5
+	padding-bottom: 20px
+	font-size: 32px
 	
 input 
 	@extend %rounded
@@ -43,6 +46,15 @@ button
 *:hover, button, a
 	@extend %trans-effect
 		
+a
+	color: $color-4
+	&:hover
+		color: $color-6
+		
+.important
+	font-weight: bold
+	padding-top: 10px
+	
 .container-main
 	max-width: 720px
 	margin: 0 auto 40px auto
@@ -52,7 +64,12 @@ button
 		background: $color-10
 		padding: 20px
 		margin-top: 20px
+	ul
+		margin-left: 20px
 		
+.container-main.text
+	line-height: 30px
+	
 .loader-top
 	padding: 50px 0
 	text-align: center
@@ -79,8 +96,14 @@ button.btn-delete
 	&:hover
 		transition: all 0.5s ease
 		background: $color-8
-		
-/******************************************************************************/
+	
+.height-20
+	padding-top: 20px
+	
+.break 
+  word-break: break-all
+
+/******************************************************************************//******************************************************************************/
 /* MEDIA QUERY - MAX 760 
 /******************************************************************************/
 
@@ -92,6 +115,10 @@ button.btn-delete
 /* MEDIA QUERY - MAX 700 
 /******************************************************************************/
 
+@media screen and (min-width: 750px) 
+	html
+		margin-left: calc(100vw - 100%) // for scrollbar
+		
 @media screen and (max-width: 700px) 
 	%rounded-no
 		-moz-border-radius: 0
@@ -103,7 +130,7 @@ button.btn-delete
 		
 	h1
 		padding: 0 10px
-		
+	
 	.container-main
 		margin: 0
 		.container

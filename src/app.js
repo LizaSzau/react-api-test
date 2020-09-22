@@ -2,7 +2,7 @@ import React from 'react'
 import {Route, Switch, Redirect} from 'react-router-dom'
 import ProductsList from './products/products-list'
 import CategoriesList from './categories/categories-list'
-import About from './about/about'
+import About from './about/about.jsx'
 
 export default function App() {
 	return (
