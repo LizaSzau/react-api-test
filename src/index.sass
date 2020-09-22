@@ -10,11 +10,16 @@
 	font-family: verdana
 	font-size: 16px
 	
-body, html
-	background: $color-1
-	color: $color-11
+html
 	height: 100%
 	
+body
+	position: relative
+	background: $color-1
+	color: $color-11
+	min-height: 100%
+	margin: 0
+
 h1
 	color: $color-3
 	padding: 20px 0
@@ -24,6 +29,11 @@ h2
 	color: $color-5
 	padding-bottom: 20px
 	font-size: 32px
+	
+h3
+	padding: 20px 0 10px 0
+	&.sum
+		padding-top: 10px
 	
 input 
 	@extend %rounded
@@ -55,7 +65,8 @@ a
 	
 .container-main
 	max-width: 720px
-	margin: 0 auto 40px auto
+	margin-left: auto 
+	margin-right: auto
 	.container
 		@extend %rounded
 		@extend %shadow

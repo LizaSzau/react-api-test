@@ -8,10 +8,12 @@ import './index.sass';
 import './loader.sass';
 
 render(
-	<BrowserRouter>
-		<MenuMain />
-		<App />
+	<div>
+		<BrowserRouter>
+			<MenuMain />
+			<App />
+		</BrowserRouter>
 		<Footer />
-	</BrowserRouter>,
+	</div>,
 	document.querySelector('#root')
 )

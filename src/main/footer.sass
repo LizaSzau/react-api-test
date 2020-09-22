@@ -2,11 +2,15 @@
 @import '../mixins'
 
 .container-footer
+	@extend %shadow 
+	@extend %rounded-top
+	position: absolute
+	bottom: -120px 
+	left: 0
+	right: 0
 	max-width: 720px
 	margin: 40px auto 0 auto
 	padding: 20px
-	@extend %shadow 
-	@extend %rounded-top
 	background-color: $color-13
 	color: $color-1
 	text-align: center
