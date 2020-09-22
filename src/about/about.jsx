@@ -30,8 +30,8 @@ class About extends Component {
 					<h3 className="height-20">Packages</h3>
 					<ul>
 						<li>
-							React Router - {" "} 
-							<a href="https://reactrouter.com/" target="_blank">
+							React Router: {" "} 
+							<a href="https://reactrouter.com/" target="_blank" className="break">
 								https://reactrouter.com/
 							</a>
 						</li>
