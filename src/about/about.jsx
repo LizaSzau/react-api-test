@@ -5,7 +5,7 @@ class About extends Component {
         return (
             <div className="container-main text">
 				<h1>About</h1>
-				I'm just learning ReactJs and this is my first app to examine the basic techniques.
+				<div className="container-text">I'm just learning ReactJs and this is my first app to examine the basic techniques.</div>
 				<div className="container">
 					<h2>Backend</h2>
 					<h3>PHP, mySQL - Apache webserver</h3>
