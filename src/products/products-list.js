@@ -15,7 +15,9 @@ class ProductsList extends Component {
 			products: [],
 			paging: [],
 			isError: false,
+			search: '',
 			statusMessage: '',
+			apiMessage: '',
 		}
 	}
   
@@ -27,11 +29,12 @@ class ProductsList extends Component {
 		trackPromise(
 			axios.get(url)
 				.then(res => {
-					const products = res.data.records;
-					const paging = res.data.paging;
+					const products = res.data.records
+					const paging = res.data.paging
 					this.setState ({
 						products: products,
 						paging: paging,
+						apiMessage: '',
 						isError: false,
 					})
 			})
@@ -40,7 +43,11 @@ class ProductsList extends Component {
 				
 				if (err.response) {
 					// client received an error response (5xx, 4xx)
-					statusMessage = 'Something went wrong. Please, try it later.'
+					if (err.response.status === 404) {
+						statusMessage = 'No products found.'
+					} else {
+						statusMessage = 'Something went wrong. Please, try it later.'
+					}
 				} else if (err.request) {
 					statusMessage = 'The client never received a response. Please, try it later.'
 				} else {
@@ -55,14 +62,21 @@ class ProductsList extends Component {
 		);
 	}
 
-    clickPageNumber = (url) => {
+    handleClickPageNumber = (url) => {
 		this.setState ({
 			products: [],
 			paging: [],
 		})
 		this.getProductsList(url)
     }
-	
+
+	handleSubmitSearch = (event) => {
+		event.preventDefault()
+		let search = event.target.search.value
+		this.getProductsList(config[0].apiURL + 'product/search.php?s=' + search)
+	}
+
+
   /*
 	removeCharacter = (index) => {
 		const {characters} = this.state
@@ -88,13 +102,13 @@ class ProductsList extends Component {
 		if (this.state.isError) {
 			table = <StatusMessage statusMessage={statusMessage} messageType="message error" />
 		} else {
-			table = <Table productsData={products} pagingData={paging} clickPageNumber={this.clickPageNumber } />
+			table = <Table productsData={products} pagingData={paging} handleClickPageNumber={this.handleClickPageNumber} />
 		}
 		
         return (
             <div className="container-main">
                 <h1>Products list</h1>
-				<Bar />
+				<Bar handleSubmitSearch={this.handleSubmitSearch} />
 				<div className="container">
 					{table}
 				</div>

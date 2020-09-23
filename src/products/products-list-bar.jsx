@@ -1,11 +1,13 @@
 import React from 'react';
 
-const Bar = () => {
-  return (
+const Bar = (props) => {
+	const {handleSubmitSearch} = props
+	
+	return (
 		<div className={"container"}>
 			<div className={"container-products-list-bar"}>
 				<div className={"bar-flex"}>
-					<BarSearch />
+					<BarSearch handleSubmitSearch={handleSubmitSearch} />
 					<BarNew />
 				</div>
 			</div>
@@ -13,11 +15,13 @@ const Bar = () => {
 	)
 }
 
-const BarSearch = () => {
+const BarSearch = (props) => {
 	return (
 		<div className={"search"}>
-			<input type="text" placeholder="Search.." name="search" />
-			<button><i className="fa fa-search"></i></button>
+			<form onSubmit={props.handleSubmitSearch}>
+				<input type="text" name="search" placeholder="Search..." />
+				<button><i className="fa fa-search"></i></button>
+			</form>
 		</div>
 	)
 }

@@ -13,14 +13,14 @@ const LoadingIndicator = props => {
 }
 
 const Table = (props) => {
-	const {productsData, pagingData, clickPageNumber} = props
+	const {productsData, pagingData, handleClickPageNumber} = props
 
 	return (
 		<div className={"container-products-list-table"}>
 			<TableHeader />
 			<LoadingIndicator/>
 			<TableBody productsData={productsData} />
-			<Paging pagingData={pagingData} clickPageNumber={clickPageNumber}/>
+			<Paging pagingData={pagingData} handleClickPageNumber={handleClickPageNumber} />
 		</div>
 	)
 }
@@ -72,7 +72,7 @@ const TableBody = (props) => {
 const Paging = (props) => {
 	const rows = props.pagingData.map((row, index) => { 
 		return (
-			<button key={index} className={`current-page-${row.current_page}`} onClick={() => props.clickPageNumber(row.url)}>{row.page}</button>
+			<button key={index} className={`current-page-${row.current_page}`} onClick={() => props.handleClickPageNumber(row.url)}>{row.page}</button>
 		)
 	})
 	
