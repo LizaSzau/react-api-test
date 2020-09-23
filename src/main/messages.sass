@@ -1,0 +1,11 @@
+@import '../variables'
+@import '../mixins'
+
+.message
+	@extend %rounded
+	padding: 20px
+	&.ok
+		color: green
+	&.error
+		background: $color-16
+		color: $color-7

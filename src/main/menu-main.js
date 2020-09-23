@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import './menu-main.sass'
 import {menus} from './menu-main-items.js'
-import {Route, NavLink} from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 
 const MenuButton = (props) => {
 	return (

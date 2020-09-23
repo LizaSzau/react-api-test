@@ -1,6 +1,6 @@
-import React from 'react';
-import NumberFormat from 'react-number-format';
-import { usePromiseTracker } from "react-promise-tracker";
+import React from 'react'
+import NumberFormat from 'react-number-format'
+import { usePromiseTracker } from "react-promise-tracker"
 
 const LoadingIndicator = props => {
 	const { promiseInProgress } = usePromiseTracker();
@@ -9,19 +9,19 @@ const LoadingIndicator = props => {
 		<div className={"loader-top"}>
 			<div className={"loader-1"}></div>
 		</div>
-	); 	
+	);	
 }
 
 const Table = (props) => {
-  const {productsData, pagingData} = props
+	const {productsData, pagingData, clickPageNumber} = props
 
-  return (
-	<div className={"container-products-list-table"}>
-		<TableHeader />
-		<LoadingIndicator/>
-		<TableBody productsData = {productsData} />
-		<Paging pagingData = {pagingData} />
-	</div>
+	return (
+		<div className={"container-products-list-table"}>
+			<TableHeader />
+			<LoadingIndicator/>
+			<TableBody productsData={productsData} />
+			<Paging pagingData={pagingData} clickPageNumber={clickPageNumber}/>
+		</div>
 	)
 }
 
@@ -70,12 +70,11 @@ const TableBody = (props) => {
 
 
 const Paging = (props) => {
-	const rows = props.pagingData.map((row, index) => {
+	const rows = props.pagingData.map((row, index) => { 
 		return (
-			<button key = {index} className={`current-page-${row.current_page}`}>{row.page}</button>
+			<button key={index} className={`current-page-${row.current_page}`} onClick={() => props.clickPageNumber(row.url)}>{row.page}</button>
 		)
 	})
-	
 	
 	return ( 
 		<div className="paging">{rows}</div> 

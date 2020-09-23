@@ -39,8 +39,14 @@ const About = () => {
 					</li>
 					<li>
 						Axios - {" "} 
-						<a href="https://www.npmjs.com/package/axios-react" target="_blank" className="break" rel="noopener noreferrer">
-							https://www.npmjs.com/package/axios-react
+						<a href="https://www.digitalocean.com/community/tutorials/react-axios-react" target="_blank" className="break" rel="noopener noreferrer">
+							https://www.digitalocean.com/community/tutorials/react-axios-react
+						</a>
+					</li>
+					<li>
+						React Promise Tracker - {" "} 
+						<a href="https://lemoncode.github.io/react-promise-tracker/" target="_blank" className="break" rel="noopener noreferrer">
+							https://lemoncode.github.io/react-promise-tracker/
 						</a>
 					</li>
 					<li>Node SASS</li>
