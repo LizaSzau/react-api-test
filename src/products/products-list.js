@@ -72,8 +72,13 @@ class ProductsList extends Component {
 
 	handleSubmitSearch = (event) => {
 		event.preventDefault()
-		let search = event.target.search.value
-		this.getProductsList(config[0].apiURL + 'product/search.php?s=' + search)
+		let search = event.target.search.value.trim()
+		if (search.length > 0)
+		{
+			this.getProductsList(config[0].apiURL + 'product/search.php?s=' + search)
+		} else {
+			this.getProductsList(config[0].apiURL + 'product/read_paging.php')
+		}
 	}
 
 
