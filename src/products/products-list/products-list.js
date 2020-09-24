@@ -3,8 +3,8 @@ import axios from 'axios'
 import {trackPromise} from 'react-promise-tracker'
 import Table from './products-list-table.jsx'
 import Bar from './products-list-bar.jsx'
-import StatusMessage from '../main/statusMessage.jsx'
-import {config} from '../main/config'
+import StatusMessage from '../../main/statusMessage.jsx'
+import {config} from '../../main/config'
 import './products-list.sass'
 
 class ProductsList extends Component {
@@ -17,7 +17,6 @@ class ProductsList extends Component {
 			isError: false,
 			search: '',
 			statusMessage: '',
-			apiMessage: '',
 		}
 	}
   
@@ -34,7 +33,6 @@ class ProductsList extends Component {
 					this.setState ({
 						products: products,
 						paging: paging,
-						apiMessage: '',
 						isError: false,
 					})
 			})
@@ -59,7 +57,7 @@ class ProductsList extends Component {
 					statusMessage: statusMessage
 				})
 			})
-		);
+		)
 	}
 
     handleClickPageNumber = (url) => {

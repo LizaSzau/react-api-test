@@ -1,6 +1,8 @@
 import React from 'react'
 import NumberFormat from 'react-number-format'
-import { usePromiseTracker } from "react-promise-tracker"
+import {usePromiseTracker} from "react-promise-tracker"
+import {NavLink} from 'react-router-dom'
+import slugify from 'react-slugify'
 
 const LoadingIndicator = props => {
 	const { promiseInProgress } = usePromiseTracker();
@@ -57,7 +59,7 @@ const TableBody = (props) => {
 					</div>
 				</div>
 				<div>
-					<button onClick={() => props.removeCharacter(index)}><i className={"fas fa-eye"}></i> View</button>
+					<NavLink to={'/product/' + row.id + '/' + slugify(row.name) }><button><i className={"fas fa-eye"}></i> View</button></NavLink>
 					<button className={"btn-edit"} onClick={() => props.removeCharacter(index)}><i className={"fas fa-edit"}></i> Edit</button>
 					<button className={"btn-delete"} onClick={() => props.removeCharacter(index)}><i className={"fas fa-trash"}></i> Delete</button>
 				</div>

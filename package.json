@@ -16,7 +16,8 @@
     "react-number-format": "^4.4.1",
     "react-promise-tracker": "^2.1.0",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.3"
+    "react-scripts": "3.4.3",
+    "react-slugify": "^2.0.2"
   },
   "scripts": {
     "start": "react-scripts start",

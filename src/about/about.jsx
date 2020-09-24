@@ -45,11 +45,28 @@ const About = () => {
 					</li>
 					<li>
 						React Promise Tracker - {" "} 
-						<a href="https://lemoncode.github.io/react-promise-tracker/" target="_blank" className="break" rel="noopener noreferrer">
-							https://lemoncode.github.io/react-promise-tracker/
+						<a href="https://lemoncode.github.io/react-promise-tracker" target="_blank" className="break" rel="noopener noreferrer">
+							https://lemoncode.github.io/react-promise-tracker
 						</a>
 					</li>
-					<li>Node SASS</li>
+					<li>
+						Node SASS - {" "} 
+						<a href="https://www.npmjs.com/package/node-sass" target="_blank" className="break" rel="noopener noreferrer">
+							https://www.npmjs.com/package/node-sass
+						</a>
+					</li>
+					<li>
+						React Slugify - {" "} 
+						<a href="https://www.npmjs.com/package/react-slugify" target="_blank" className="break" rel="noopener noreferrer">
+							https://www.npmjs.com/package/react-slugify
+						</a>
+					</li>
+					<li>
+						React Number Format - {" "} 
+						<a href="https://www.npmjs.com/package/react-number-format" target="_blank" className="break" rel="noopener noreferrer">
+							https://www.npmjs.com/package/react-number-format
+						</a>
+					</li>
 				</ul>
 				<h3 className="height-20">UI</h3>
 				Based on this tutorial: <br />
