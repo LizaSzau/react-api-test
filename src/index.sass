@@ -20,6 +20,9 @@ body
 	min-height: 100%
 	margin: 0
 
+*:hover, button, a
+	@extend %trans-effect
+	
 h1
 	color: $color-3
 	padding: 20px 0
@@ -35,11 +38,6 @@ h3
 	&.sum
 		padding-top: 10px
 	
-input 
-	@extend %rounded
-	&[type=text]
-		height: $button-height
-	
 button
 	@extend %rounded
 	@extend %no-select
@@ -52,9 +50,36 @@ button
 	border: none 
 	&:hover
 		background: $color-4
+	
+input,
+select,
+option,
+textarea
+	@extend %rounded
+	&[type=text]
+		height: $button-height
 		
-*:hover, button, a
-	@extend %trans-effect
+input, 
+select,
+textarea
+	padding: 10px
+	width: 100%
+	border: 1px solid $color-2
+
+select
+	padding: 10px
+	
+textarea
+	resize: vertical
+	min-height: 50px
+	height: 80px
+	
+input:focus, 
+textarea:focus,
+select:focus
+	outline: none !important
+	border: 2px solid $color-3
+	transition: none
 		
 a
 	color: $color-4
@@ -86,11 +111,14 @@ a
 .number-format
 	background: inherit
 	color: inherit
-	border: none
+	border: none !important
 	text-align: right
-	width: 80px
+	width: 90px
 	height: 100%
-
+	&:focus
+		outline: none !important
+		border: none
+	
 .align-right
 	text-align: right
 	
@@ -109,10 +137,18 @@ button.btn-delete
 .height-20
 	padding-top: 20px
   
- .important
+.important
 	font-weight: bold
 	padding-top: 10px
 
+div.error-message-form
+	@extend %rounded
+	background: $color-16
+	font-size: 14px
+	color: $color-7
+	padding: 10px 
+	margin-top: 5px
+	
 /******************************************************************************//******************************************************************************/
 /* MEDIA QUERY - MAX 760 
 /******************************************************************************/

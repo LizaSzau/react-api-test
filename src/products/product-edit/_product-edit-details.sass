@@ -1,29 +1,29 @@
-.container-product-view-details
+.container-product-edit-details
 	.bar-flex
 		display: flex
-		div
-			padding: 10px
+		div:not(.error-message-form)
+			padding: 0 
 			margin: 2px
-			@extend %rounded
+			width: 100%
 		div:first-child
+			@extend %rounded
 			width: 130px
 			min-width: 130px 
 			background: $color-12
 			padding: 10px
 			margin: 2px
-	.number-format
-		text-align: left
-		margin-left: 10px
-		
+			
 /******************************************************************************/
 /* MEDIA QUERY - MAX 500 */
 /******************************************************************************/
 
 @media screen and (max-width: 500px) 
 
-	.container-product-view-details
+	.container-product-edit-details
 		.bar-flex
 			display: block
+			margin-bottom: 10px
 			div:first-child
 				width: 100%
+			
 				

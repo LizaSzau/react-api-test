@@ -3,6 +3,10 @@ import './menu-main.sass'
 import {menus} from './menu-main-items.js'
 import {NavLink} from 'react-router-dom'
 
+// ****************************************************************************
+// MenuButton
+// ****************************************************************************
+
 const MenuButton = (props) => {
 	return (
 		<li>
@@ -10,6 +14,10 @@ const MenuButton = (props) => {
 		</li>
 	);
 }
+
+// ****************************************************************************
+// Class
+// ****************************************************************************
 
 class Menu extends Component {
 	renderMenuButton(i) {		

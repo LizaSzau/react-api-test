@@ -4,7 +4,7 @@ import {trackPromise} from 'react-promise-tracker'
 import Table from './products-list-table.jsx'
 import Bar from './products-list-bar.jsx'
 import StatusMessage from '../../main/statusMessage.jsx'
-import {config} from '../../main/config'
+import {config} from '../../config'
 import './products-list.sass'
 
 class ProductsList extends Component {
@@ -24,6 +24,10 @@ class ProductsList extends Component {
 		this.getProductsList(config[0].apiURL + 'product/read_paging.php')
 	}
 	
+// ****************************************************************************
+// GetProductsList
+// ****************************************************************************
+
 	getProductsList = (url) => {
 		trackPromise(
 			axios.get(url)
@@ -60,6 +64,10 @@ class ProductsList extends Component {
 		)
 	}
 
+// ****************************************************************************
+// HandleClickPageNumber
+// ****************************************************************************
+
     handleClickPageNumber = (url) => {
 		this.setState ({
 			products: [],
@@ -67,6 +75,10 @@ class ProductsList extends Component {
 		})
 		this.getProductsList(url)
     }
+
+// ****************************************************************************
+// HandleSubmitSearch
+// ****************************************************************************
 
 	handleSubmitSearch = (event) => {
 		event.preventDefault()
@@ -95,6 +107,11 @@ class ProductsList extends Component {
         this.setState({characters: [...this.state.characters, character]});
     }
 	*/
+	
+// ****************************************************************************
+// Render
+// ****************************************************************************
+
     render() {
         const {products} = this.state
         const {paging} = this.state

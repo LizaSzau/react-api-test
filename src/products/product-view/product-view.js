@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import axios from 'axios'
 import {trackPromise} from 'react-promise-tracker'
-import {config} from '../../main/config'
+import {config} from '../../config'
 import StatusMessage from '../../main/statusMessage.jsx'
 import ProductViewDetails from './product-view-details.jsx'
 import ButtonBack from './product-view-button-back.jsx'
@@ -82,7 +82,7 @@ class ProductView extends Component {
 		
         return (
             <div className="container-main">
-                <h1>Product</h1>
+                <h1>View product</h1>
 				<div className="container">
 					{product}
 				</div>

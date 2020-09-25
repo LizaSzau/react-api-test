@@ -1,9 +1,8 @@
 import React from 'react'
 import NumberFormat from 'react-number-format'
 import {usePromiseTracker} from "react-promise-tracker"
-import './product-view.sass'
 
-const LoadingIndicator = props => {
+const LoadingIndicator = () => {
 	const { promiseInProgress } = usePromiseTracker();
 	return (
 		promiseInProgress && 
@@ -18,13 +17,14 @@ const ProductViewDetails = (props) => {
 
 	return (
 		<div className={"container-product-view-details"}>
+			<LoadingIndicator/>
 			<div className="bar-flex">
 				<div>Name:</div>
 				<div>{name}</div>
 			</div>
 			<div className="bar-flex">
 				<div>Price:</div>
-				<div>{price}</div>
+				<NumberFormat className={"number-format"} value={price} thousandSeparator={true} prefix={'$'} />
 			</div>
 			<div className="bar-flex">
 				<div>Description:</div>

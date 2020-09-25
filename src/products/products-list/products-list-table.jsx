@@ -4,7 +4,11 @@ import {usePromiseTracker} from "react-promise-tracker"
 import {NavLink} from 'react-router-dom'
 import slugify from 'react-slugify'
 
-const LoadingIndicator = props => {
+// ****************************************************************************
+// LoadingIndicator
+// ****************************************************************************
+
+const LoadingIndicator = () => {
 	const { promiseInProgress } = usePromiseTracker();
 	return (
 		promiseInProgress && 
@@ -13,6 +17,10 @@ const LoadingIndicator = props => {
 		</div>
 	);	
 }
+
+// ****************************************************************************
+// Table
+// ****************************************************************************
 
 const Table = (props) => {
 	const {productsData, pagingData, handleClickPageNumber} = props
@@ -27,6 +35,10 @@ const Table = (props) => {
 	)
 }
 
+// ****************************************************************************
+// TableHeader
+// ****************************************************************************
+
 const TableHeader = () => {
 	return (
 		<div className={"flex-container"}>
@@ -36,6 +48,10 @@ const TableHeader = () => {
 		</div>
 	)
 }
+
+// ****************************************************************************
+// TableBody
+// ****************************************************************************
 
 const TableBody = (props) => {
 	const rows = props.productsData.map((row, index) => {
@@ -59,9 +75,13 @@ const TableBody = (props) => {
 					</div>
 				</div>
 				<div>
-					<NavLink to={'/product/' + row.id + '/' + slugify(row.name) }><button><i className={"fas fa-eye"}></i> View</button></NavLink>
-					<button className={"btn-edit"} onClick={() => props.removeCharacter(index)}><i className={"fas fa-edit"}></i> Edit</button>
-					<button className={"btn-delete"} onClick={() => props.removeCharacter(index)}><i className={"fas fa-trash"}></i> Delete</button>
+					<NavLink to={'/product/view/' + row.id + '/' + slugify(row.name)}>
+						<button><i className={"fas fa-eye"}></i> View</button>
+					</NavLink>
+					<NavLink to={'/product/edit/' + row.id + '/' + slugify(row.name)}>
+						<button className={"btn-edit"}><i className={"fas fa-edit"}></i> Edit</button>
+					</NavLink>
+					<button className={"btn-delete"}><i className={"fas fa-trash"}></i> Delete</button>
 				</div>
 			</div>
 		)
@@ -70,6 +90,9 @@ const TableBody = (props) => {
 	return rows
 }
 
+// ****************************************************************************
+// paging
+// ****************************************************************************
 
 const Paging = (props) => {
 	const rows = props.pagingData.map((row, index) => { 
