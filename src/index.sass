@@ -78,7 +78,7 @@ input:focus,
 textarea:focus,
 select:focus
 	outline: none !important
-	border: 2px solid $color-3
+	border: 1px solid $color-3
 	transition: none
 		
 a
@@ -148,6 +148,14 @@ div.error-message-form
 	color: $color-7
 	padding: 10px 
 	margin-top: 5px
+	
+div.success-message-form
+	@extend %rounded
+	background: $color-17
+	color: $color-6
+	padding: 10px 
+	margin-top: 5px
+	
 	
 /******************************************************************************//******************************************************************************/
 /* MEDIA QUERY - MAX 760 

@@ -78,11 +78,11 @@ const ProductEditDetails = (props) => (
 
 			validationSchema = {EditSchema}
 
-			onSubmit = {(values, actions, status) => {
-
+			onSubmit = {(values, actions) => {
+				
 				let url = config[0].apiURL + 'product/update.php'
 				actions.setSubmitting(false)
-
+				actions.setStatus="SENT";
 				async function makePostRequest() {
 
 					var params = {
@@ -94,8 +94,7 @@ const ProductEditDetails = (props) => (
 					}
 
 					await axios.post(url, params).catch(err => { 
-						var statusMessage 
-						
+						let statusMessage 
 						if (err.response) {
 							statusMessage = 'Something went wrong. Please, try it later.'
 						} else if (err.request) {
@@ -112,9 +111,10 @@ const ProductEditDetails = (props) => (
 			}}
 		>
 
-			{props => (
+			{props  => (
 		
 				<form onSubmit={props.handleSubmit}>
+					{console.log(props)}
 					<div className="bar-flex">
 						<div><label htmlFor="name">Name:</label></div>
 						<div>
@@ -144,7 +144,7 @@ const ProductEditDetails = (props) => (
 							</Field>
 						</div>
 					</div>
-					{props.statusMessage}
+						
 					<Buttons />
 			 </form>
 			 

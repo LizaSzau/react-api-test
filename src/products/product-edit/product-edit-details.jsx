@@ -78,11 +78,14 @@ const ProductEditDetails = (props) => (
 
 			validationSchema = {EditSchema}
 
-			onSubmit = {(values, actions, status) => {
-
+			onSubmit = {(values, actions) => {
+				
 				let url = config[0].apiURL + 'product/update.php'
 				actions.setSubmitting(false)
-
+				actions.setSubmitting(false)
+				actions.setStatus({successMessage: 'The product has successfully updated.'})
+			
+		
 				async function makePostRequest() {
 
 					var params = {
@@ -93,9 +96,8 @@ const ProductEditDetails = (props) => (
 						category_id: values.category_id,
 					}
 
-					await axios.post(url, params).catch(err => { 
+					await axios.post(url, params, actions).catch(err => { 
 						let statusMessage 
-						
 						if (err.response) {
 							statusMessage = 'Something went wrong. Please, try it later.'
 						} else if (err.request) {
@@ -103,8 +105,8 @@ const ProductEditDetails = (props) => (
 						} else {
 							statusMessage = 'Something went wrong. Please, try it later.'
 						}
-
-						console.log(statusMessage)
+						
+						actions.setStatus({errorMessage: statusMessage})
 					})
 				}
 
@@ -115,6 +117,25 @@ const ProductEditDetails = (props) => (
 			{props  => (
 		
 				<form onSubmit={props.handleSubmit}>
+					{console.log(props)}
+					{props.status && props.status.errorMessage &&
+						<div>
+							<div className="error-message-form ">
+								{props.status.errorMessage}
+							</div>
+							<div className="height-20"></div>
+						</div>
+					}
+					  
+					{props.status && props.status.successMessage &&
+						<div>
+							<div className="success-message-form ">
+								{props.status.successMessage}
+							</div>
+							<div className="height-20"></div>
+						</div>
+					}
+					
 					<div className="bar-flex">
 						<div><label htmlFor="name">Name:</label></div>
 						<div>
@@ -144,7 +165,7 @@ const ProductEditDetails = (props) => (
 							</Field>
 						</div>
 					</div>
-					{props.statusMessage}
+						
 					<Buttons />
 			 </form>
 			 
