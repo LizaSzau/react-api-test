@@ -82,10 +82,9 @@ const ProductEditDetails = (props) => (
 				
 				let url = config[0].apiURL + 'product/update.php'
 				actions.setSubmitting(false)
-				actions.setSubmitting(false)
+
 				actions.setStatus({successMessage: 'The product has successfully updated.'})
 			
-		
 				async function makePostRequest() {
 
 					var params = {
@@ -112,18 +111,49 @@ const ProductEditDetails = (props) => (
 
 				makePostRequest()
 			}}
+
 		>
 
 			{props  => (
 		
 				<form onSubmit={props.handleSubmit}>
 					{console.log(props)}
+					
+					<div className="bar-flex">
+						<div><label htmlFor="name">Name:</label></div>
+						<div>
+							<Field name="name" id="name" maxLength="32" onBlur={e => {props.setStatus({successMessage: null}) }} />
+							<ErrorMessage name="name" component="div" className="error-message-form" />
+						</div>
+					</div>
+					<div className="bar-flex">
+						<div><label htmlFor="price">Price:</label></div>
+						<div>
+							<Field name="price" id="price" onBlur={e => {props.setStatus({successMessage: null}) }} />
+							<ErrorMessage name="price" component="div" className="error-message-form" />
+						</div>
+					</div>
+					<div className="bar-flex">
+						<div><label htmlFor="description">Description:</label></div>
+						<div>
+							<Field component="textarea" name="description" id="description" />
+							<ErrorMessage name="description" component="div" className="error-message-form" onBlur={e => {props.setStatus({successMessage: null}) }} />
+						</div>
+					</div>
+					<div className="bar-flex">
+						<div><label htmlFor="category_id">Category:</label></div>
+						<div>
+							<Field as="select" name="category_id" id="category_id" onBlur={e => {props.setStatus({successMessage: null}) }} >
+								<Categories categoriesData={props.values.categories} />
+							</Field>
+						</div>
+					</div>
+
 					{props.status && props.status.errorMessage &&
 						<div>
 							<div className="error-message-form ">
 								{props.status.errorMessage}
 							</div>
-							<div className="height-20"></div>
 						</div>
 					}
 					  
@@ -132,40 +162,9 @@ const ProductEditDetails = (props) => (
 							<div className="success-message-form ">
 								{props.status.successMessage}
 							</div>
-							<div className="height-20"></div>
 						</div>
 					}
 					
-					<div className="bar-flex">
-						<div><label htmlFor="name">Name:</label></div>
-						<div>
-							<Field name="name" id="name" maxLength="32"/>
-							<ErrorMessage name="name" component="div" className="error-message-form" />
-						</div>
-					</div>
-					<div className="bar-flex">
-						<div><label htmlFor="price">Price:</label></div>
-						<div>
-							<Field name="price" id="price" />
-							<ErrorMessage name="price" component="div" className="error-message-form" />
-						</div>
-					</div>
-					<div className="bar-flex">
-						<div><label htmlFor="description">Description:</label></div>
-						<div>
-							<Field component="textarea" name="description" id="description" />
-							<ErrorMessage name="description" component="div" className="error-message-form" />
-						</div>
-					</div>
-					<div className="bar-flex">
-						<div><label htmlFor="category_id">Category:</label></div>
-						<div>
-							<Field as="select" name="category_id" id="category_id">
-								<Categories categoriesData={props.values.categories} />
-							</Field>
-						</div>
-					</div>
-						
 					<Buttons />
 			 </form>
 			 

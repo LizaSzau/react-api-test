@@ -54,6 +54,18 @@ const About = () => {
 						</a>
 					</li>
 					<li>
+						Formik - {" "} 
+						<a href="https://formik.org/" target="_blank" className="break" rel="noopener noreferrer">
+							https://formik.org/
+						</a>
+					</li>
+					<li>
+						Yup - {" "} 
+						<a href="https://www.npmjs.com/package/yup" target="_blank" className="break" rel="noopener noreferrer">
+							https://www.npmjs.com/package/yup
+						</a>
+					</li>
+					<li>
 						Node SASS - {" "} 
 						<a href="https://www.npmjs.com/package/node-sass" target="_blank" className="break" rel="noopener noreferrer">
 							https://www.npmjs.com/package/node-sass
