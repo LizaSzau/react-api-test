@@ -21,7 +21,22 @@ class ProductsList extends Component {
 	}
   
 	componentDidMount() {
-		this.getProductsList(config[0].apiURL + 'product/read_paging.php')
+		let url
+
+		if (sessionStorage.getItem("url")) {
+			url = sessionStorage.getItem("url")
+		} else {
+			url = config[0].apiURL + 'product/read_paging.php'
+		}
+
+		if (sessionStorage.getItem("search")) {
+			this.setState ({
+				search: sessionStorage.getItem("search"),
+			})
+		}
+		
+		sessionStorage.setItem('url', url)
+		this.getProductsList(url)
 	}
 	
 // ****************************************************************************
@@ -29,6 +44,7 @@ class ProductsList extends Component {
 // ****************************************************************************
 
 	getProductsList = (url) => {
+		console.log(url)
 		trackPromise(
 			axios.get(url)
 				.then(res => {
@@ -73,6 +89,8 @@ class ProductsList extends Component {
 			products: [],
 			paging: [],
 		})
+		
+		sessionStorage.setItem('url', url)
 		this.getProductsList(url)
     }
 
@@ -83,12 +101,19 @@ class ProductsList extends Component {
 	handleSubmitSearch = (event) => {
 		event.preventDefault()
 		let search = event.target.search.value.trim()
+		let url
+		
 		if (search.length > 0)
 		{
-			this.getProductsList(config[0].apiURL + 'product/search.php?s=' + search)
+			url = config[0].apiURL + 'product/search.php?s=' + search
+			this.getProductsList(url)
 		} else {
-			this.getProductsList(config[0].apiURL + 'product/read_paging.php')
+			url = config[0].apiURL + 'product/read_paging.php'
+			this.getProductsList(url)
 		}
+		
+		sessionStorage.setItem("url", url);
+		sessionStorage.setItem('search', search)
 	}
 
 
@@ -116,7 +141,8 @@ class ProductsList extends Component {
         const {products} = this.state
         const {paging} = this.state
         const {statusMessage} = this.state
-		
+		const {search} = this.state
+
 		let table
 
 		if (this.state.isError) {
@@ -128,7 +154,7 @@ class ProductsList extends Component {
         return (
             <div className="container-main">
                 <h1>Products list</h1>
-				<Bar handleSubmitSearch={this.handleSubmitSearch} />
+				<Bar handleSubmitSearch={this.handleSubmitSearch} searchData={search} />
 				<div className="container">
 					{table}
 				</div>

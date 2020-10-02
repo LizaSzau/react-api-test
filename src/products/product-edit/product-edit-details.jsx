@@ -117,7 +117,6 @@ const ProductEditDetails = (props) => (
 			{props  => (
 		
 				<form onSubmit={props.handleSubmit}>
-					{console.log(props)}
 					
 					<div className="bar-flex">
 						<div><label htmlFor="name">Name:</label></div>

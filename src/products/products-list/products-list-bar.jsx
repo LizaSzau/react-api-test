@@ -1,13 +1,14 @@
-import React from 'react';
+import React from "react";
 
 const Bar = (props) => {
 	const {handleSubmitSearch} = props
+	const {searchData} = props
 	
 	return (
 		<div className={"container"}>
 			<div className={"container-products-list-bar"}>
 				<div className={"bar-flex"}>
-					<BarSearch handleSubmitSearch={handleSubmitSearch} />
+					<BarSearch handleSubmitSearch={handleSubmitSearch}  searchData={searchData}/>
 					<BarNew />
 				</div>
 			</div>
@@ -18,8 +19,8 @@ const Bar = (props) => {
 const BarSearch = (props) => {
 	return (
 		<div className={"search"}>
-			<form onSubmit={props.handleSubmitSearch}>
-				<input type="text" name="search" placeholder="Search..." />
+			<form onSubmit={props.handleSubmitSearch} >
+				<input type="text" name="search" placeholder="Search..." defaultValue={props.searchData} />
 				<button><i className="fa fa-search"></i></button>
 			</form>
 		</div>
