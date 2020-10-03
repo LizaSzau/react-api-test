@@ -141,6 +141,10 @@ button.btn-delete
 	font-weight: bold
 	padding-top: 10px
 
+/******************************************************************************/
+/* MESSAGES
+/******************************************************************************/
+
 div.error-message-form
 	@extend %rounded
 	background: $color-16
@@ -156,8 +160,56 @@ div.success-message-form
 	padding: 10px 
 	margin-top: 5px
 	
+/******************************************************************************/
+/* MODAL 
+/******************************************************************************/
+
+.modal 
+	position: fixed
+	top: 0
+	left: 0
+	width: 100%
+	height: 100%
+	background: rgba(0, 0, 0, 0.6)
+
+.modal-main 
+	@extend %rounded
+	position: fixed
+	background: white
+	width: 400px
+	height: auto
+	top: 50%
+	left: 50%
+	transform: translate(-50%,-50%)
+	.modal-title
+		padding: 20px
+		border-bottom: 1px solid $color-2
+	.content	
+		padding: 20px
+		.flex
+			display: flex
+			padding: 5px 0
+			div:first-child
+				width: 70px
+				color: $color-4
+			&:last-child
+				justify-content: space-between
+				padding-top: 20px
+				div
+					width: auto
+	.delete-ok
+		padding-top: 10px
+		.button-ok
+			text-align: right
+			padding-top: 20px
 	
-/******************************************************************************//******************************************************************************/
+.display-block
+	display: block
+	
+.display-none
+	display: none
+	
+p/******************************************************************************/
 /* MEDIA QUERY - MAX 760 
 /******************************************************************************/
 

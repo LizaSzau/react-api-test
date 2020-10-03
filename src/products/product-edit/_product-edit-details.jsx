@@ -102,8 +102,6 @@ const ProductEditDetails = (props) => (
 						} else {
 							statusMessage = 'Something went wrong. Please, try it later.'
 						}
-
-						console.log(statusMessage)
 					})
 				}
 

@@ -131,23 +131,6 @@ class ProductEdit extends Component {
     }
 	
 // ****************************************************************************
-// HandleSubmitEdit
-// ****************************************************************************
-
-	handleSubmitEdit = (event) => {
-		console.log(888)
-		event.preventDefault()
-			console.log(888)
-		alert("SUBMIT")
-		/*
-		let name = this.state.name.trim()
-		let price = parseInt(this.state.price)
-		let description = this.state.description.trim()
-		let category_id = parseInt(this.state.category_id)
-		*/
-	}
-	
-// ****************************************************************************
 // Render
 // ****************************************************************************
 

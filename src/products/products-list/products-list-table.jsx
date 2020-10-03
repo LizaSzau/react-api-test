@@ -23,13 +23,13 @@ const LoadingIndicator = () => {
 // ****************************************************************************
 
 const Table = (props) => {
-	const {productsData, pagingData, handleClickPageNumber} = props
+	const {productsData, pagingData, handleClickPageNumber, handleShowModalDelete} = props
 
 	return (
 		<div className={"container-products-list-table"}>
 			<TableHeader />
 			<LoadingIndicator/>
-			<TableBody productsData={productsData} />
+			<TableBody productsData={productsData} handleShowModalDelete={handleShowModalDelete} />
 			<Paging pagingData={pagingData} handleClickPageNumber={handleClickPageNumber} />
 		</div>
 	)
@@ -54,6 +54,7 @@ const TableHeader = () => {
 // ****************************************************************************
 
 const TableBody = (props) => {
+	
 	const rows = props.productsData.map((row, index) => {
 		return (
 			<div className={"flex-container"} key = {index}>
@@ -81,7 +82,9 @@ const TableBody = (props) => {
 					<NavLink to={'/product/edit/' + row.id + '/' + slugify(row.name)}>
 						<button className={"btn-edit"}><i className={"fas fa-edit"}></i> Edit</button>
 					</NavLink>
-					<button className={"btn-delete"}><i className={"fas fa-trash"}></i> Delete</button>
+					<button className={"btn-delete"} onClick={() => {props.handleShowModalDelete(row.name, row.id)}}>
+						<i className={"fas fa-trash"}></i> Delete
+					</button>
 				</div>
 			</div>
 		)
