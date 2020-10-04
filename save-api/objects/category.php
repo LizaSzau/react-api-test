@@ -126,7 +126,7 @@ class Category{
 	  
 		// update query
 		$query = "UPDATE " . $this->table_name . " 
-				SET name = :name,
+				SET name = :name, 
 					description = :description 
 				WHERE id = :id";
 	
