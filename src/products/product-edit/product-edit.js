@@ -4,7 +4,7 @@ import {trackPromise} from 'react-promise-tracker'
 import {config} from '../../config'
 import StatusMessage from '../../main/statusMessage.jsx'
 import ProductEditForm from './product-edit-form.jsx'
-import './product-edit.sass'
+import '../../main/sass-common/edit.sass'
 
 class ProductEdit extends Component {
 

@@ -1,9 +1,9 @@
 import React, {Component} from 'react'
 import axios from 'axios'
 import {trackPromise} from 'react-promise-tracker'
-import Table from './products-list-table.jsx'
-import Bar from './products-list-bar.jsx'
-import ModalDelete from './products-list-delete.jsx'
+import Table from './categories-list-table.jsx'
+import Bar from './categories-list-bar.jsx'
+import ModalDelete from './categories-list-delete.jsx'
 import StatusMessage from '../../main/statusMessage.jsx'
 import {config} from '../../config'
 import '../../main/sass-common/list.sass'
@@ -13,10 +13,8 @@ class ProductsList extends Component {
 		super()
 
 		this.state = {
-			products: [],
-			paging: [],
+			categories: [],
 			isError: false,
-			search: '',
 			statusMessage: '',
 			showModal: false,
 			showDelete: false,
@@ -27,38 +25,22 @@ class ProductsList extends Component {
 	}
   
 	componentDidMount() {
-		let url
-
-		if (sessionStorage.getItem("url")) {
-			url = sessionStorage.getItem("url")
-		} else {
-			url = config[0].apiURL + 'product/read_paging.php'
-		}
-
-		if (sessionStorage.getItem("search")) {
-			this.setState ({
-				search: sessionStorage.getItem("search"),
-			})
-		}
-	
-		sessionStorage.setItem('url', url)
-		this.getProductsList(url)
+		let url_categories = config[0].apiURL + 'category/read_sum.php'
+		this.getCategoriesList(url_categories)
 	}
 	
 // ****************************************************************************
-// GetProductsList
+// GetCategoriesList
 // ****************************************************************************
 
-	getProductsList = (url) => {
+	getCategoriesList = (url) => {
 		trackPromise(
 			axios.get(url)
 				.then(res => {
-					const products = res.data.records
-					const paging = res.data.paging
+					const categories = res.data.records
+					
 					this.setState ({
-						products: products,
-						paging: paging,
-						isError: false,
+						categories: categories,
 					})
 			})
 			.catch(err => { 
@@ -66,7 +48,7 @@ class ProductsList extends Component {
 				
 				if (err.response) {
 					if (err.response.status === 404) {
-						statusMessage = 'No products found.'
+						statusMessage = 'No category found.'
 					} else {
 						statusMessage = 'Something went wrong. Please, try it later.'
 					}
@@ -81,44 +63,8 @@ class ProductsList extends Component {
 					statusMessage: statusMessage
 				})
 			})
-		)
-	}
-
-// ****************************************************************************
-// HandleClickPageNumber
-// ****************************************************************************
-
-    handleClickPageNumber = (url) => {
-		this.setState ({
-			products: [],
-			paging: [],
-		})
-		
-		sessionStorage.setItem('url', url)
-		this.getProductsList(url)
+		)		
     }
-
-// ****************************************************************************
-// HandleSubmitSearch
-// ****************************************************************************
-
-	handleSubmitSearch = (event) => {
-		event.preventDefault()
-		let search = event.target.search.value.trim()
-		let url
-		
-		if (search.length > 0)
-		{
-			url = config[0].apiURL + 'product/search.php?s=' + search
-			this.getProductsList(url)
-		} else {
-			url = config[0].apiURL + 'product/read_paging.php'
-			this.getProductsList(url)
-		}
-		
-		sessionStorage.setItem("url", url);
-		sessionStorage.setItem('search', search)
-	}
 
 // ****************************************************************************
 // Show modal for delete
@@ -150,7 +96,7 @@ class ProductsList extends Component {
 // ****************************************************************************
 
 	handleDelete = (id) => {
-		let url = config[0].apiURL + 'product/delete.php'
+		let url = config[0].apiURL + 'category/delete.php'
 		
 		async function makePostRequest() {
 
@@ -185,12 +131,23 @@ class ProductsList extends Component {
 			url = config[0].apiURL + 'product/read_paging.php'
 		}
 		
+		/*
 		this.setState({ 
 			showDelete: false,
 			showDeleteOK: true,
 		});
+		*/
+		//this.getProductsList(url)
 		
-		this.getProductsList(url)
+		const {categories} = this.state
+		this.setState({ 
+			showDelete: false,
+			showDeleteOK: true,
+			categories: categories.filter((product, i) => {
+				return product.id !== id
+			})
+		});
+		
 	}
 	
 // ****************************************************************************
@@ -198,10 +155,8 @@ class ProductsList extends Component {
 // ****************************************************************************
 
     render() {
-        const {products} = this.state
-        const {paging} = this.state
+        const {categories} = this.state
         const {statusMessage} = this.state
-		const {search} = this.state
 		
 		// Delete
 		const {showModal} = this.state
@@ -215,15 +170,13 @@ class ProductsList extends Component {
 		if (this.state.isError) {
 			table = <StatusMessage statusMessage={statusMessage} messageType="message error" />
 		} else {
-			table = <Table productsData={products} pagingData={paging} 
-						handleClickPageNumber={this.handleClickPageNumber} handleShowModalDelete={this.handleShowModalDelete} 
-					/>
+			table = <Table categoriesData={categories} handleShowModalDelete={this.handleShowModalDelete} />
 		}
 		
         return (
             <div className="container-main">
-                <h1>Products list</h1>
-				<Bar handleSubmitSearch={this.handleSubmitSearch} searchData={search} />
+                <h1>Categories list</h1>
+				<Bar />
 				<div className="container">
 					{table}
 				</div>

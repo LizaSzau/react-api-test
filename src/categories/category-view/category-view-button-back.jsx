@@ -1,13 +1,12 @@
 import React from 'react'
 import {NavLink} from 'react-router-dom'
 
-
-const ProductViewButtonBack = () => {
+const CategoryViewButtonBack = () => {
 	return (
 		<div className={"container-product-view-button-back"}>
-			<NavLink to="/products-list"><button>Back</button></NavLink>
+			<NavLink to="/categories-list"><button>Back</button></NavLink>
 		</div>
 	)
 }
 
-export default ProductViewButtonBack
+export default CategoryViewButtonBack

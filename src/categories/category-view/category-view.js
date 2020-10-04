@@ -3,11 +3,11 @@ import axios from 'axios'
 import {trackPromise} from 'react-promise-tracker'
 import {config} from '../../config'
 import StatusMessage from '../../main/statusMessage.jsx'
-import ProductViewDetails from './product-view-details.jsx'
-import ButtonBack from './product-view-button-back.jsx'
+import CategoryViewDetails from './category-view-details.jsx'
+import ButtonBack from './category-view-button-back.jsx'
 import '../../main/sass-common/view.sass'
 
-class ProductView extends Component {
+class CategoryView extends Component {
 
 	constructor(){
 		super()
@@ -22,21 +22,18 @@ class ProductView extends Component {
 	}
 	
 	componentDidMount () {
+		
 		const {id} = this.props.match.params
-		let url = config[0].apiURL + 'product/read_one.php?id=' + id
+		let url = config[0].apiURL + 'category/read_one.php?id=' + id
 
 		trackPromise(
 			axios.get(url)
 				.then(res => {
 					const name = res.data.name
 					const description = res.data.description
-					const price = res.data.price
-					const category_name = res.data.category_name
 					this.setState ({
 						name: name,
 						description: description,
-						price: price,
-						category_name: category_name,
 						statusMessage: '',
 						isError: false,
 					})
@@ -47,7 +44,7 @@ class ProductView extends Component {
 				if (err.response) {
 					// client received an error response (5xx, 4xx)
 					if (err.response.status === 404) {
-						statusMessage = 'No product found.'
+						statusMessage = 'No category found.'
 					} else {
 						statusMessage = 'Something went wrong. Please, try it later.'
 					}
@@ -67,24 +64,22 @@ class ProductView extends Component {
 	
     render() {
         const {name} = this.state
-        const {price} = this.state
         const {description} = this.state
-        const {category_name} = this.state
         const {statusMessage} = this.state
 		
-		let product
+		let category
 
 		if (this.state.isError) {
-			product = <StatusMessage statusMessage={statusMessage} messageType="message error" />
+			category = <StatusMessage statusMessage={statusMessage} messageType="message error" />
 		} else {
-			product = <ProductViewDetails name={name} price={price} description={description} category_name={category_name} />
+			category = <CategoryViewDetails name={name} description={description} />
 		}
 		
         return (
             <div className="container-main">
-                <h1>View product</h1>
+                <h1>View category</h1>
 				<div className="container">
-					{product}
+					{category}
 				</div>
 				<ButtonBack />
             </div>
@@ -93,4 +88,4 @@ class ProductView extends Component {
 
 }
 
-export default ProductView
+export default CategoryView

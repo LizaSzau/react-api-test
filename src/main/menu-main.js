@@ -20,7 +20,10 @@ const MenuButton = (props) => {
 // ****************************************************************************
 
 class Menu extends Component {
-	renderMenuButton(i) {		
+	
+	
+	renderMenuButton(i) {	
+				
 		return (
 			<MenuButton 
 				key = {menus[i].id}

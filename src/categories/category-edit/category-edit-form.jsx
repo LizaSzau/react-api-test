@@ -3,7 +3,7 @@ import axios from 'axios'
 import {Formik, Field, ErrorMessage} from 'formik'  
 import * as Yup from 'yup'
 import {usePromiseTracker} from "react-promise-tracker"
-import Buttons from './product-edit-buttons.jsx'
+import Buttons from './category-edit-buttons.jsx'
 import {config} from '../../config'
  
 // ****************************************************************************
@@ -21,20 +21,6 @@ const LoadingIndicator = () => {
 }
 
 // ****************************************************************************
-// Categories
-// ****************************************************************************
-
-const Categories = (props) => {
-	const rows = props.categoriesData.map((row, index) => {
-		return (
-			<option value={row.id} key={index}>{row.name}</option>
-		)
-	})
-
-	return rows 
-}
-
-// ****************************************************************************
 // Validation
 // ****************************************************************************
 
@@ -43,11 +29,6 @@ const EditSchema = Yup.object().shape({
 		.min(3, 'Name is too Short! (Between 3 and 32 characters)')
 		.max(32, 'Name is too Long! (Between 3 and 32 characters)')
 		.required('Name is required.'),
-	price: Yup.number()
-		.required('Price is required.')
-		.positive('Price most be a positive number.')
-		.integer('Price most be an integer.')
-		.typeError('You must specify a number.'),
 	description: Yup.string()
 		.min(3, 'Description is too Short! (Between 3 and 500 characters)')
 		.max(500, 'Description is too Long! (Between 3 and 500 characters)')
@@ -55,10 +36,10 @@ const EditSchema = Yup.object().shape({
 })
 
 // ****************************************************************************
-// ProductEditDetails
+// categoryEditDetails
 // ****************************************************************************
 
-const ProductEditDetails = (props) => (
+const CategoryEditForm = (props) => (
  
 	<div className={"container-product-edit-details"}>
 		<LoadingIndicator/>
@@ -69,33 +50,28 @@ const ProductEditDetails = (props) => (
 			initialValues={{ 
 				id: props.values.id, 
 				name: props.values.name, 
-				price: props.values.price,
 				description: props.values.description,
-				category_id: props.values.category_id,
-				categories: props.values.categories,
 				statusMessage: '',
 			}}
 
 			validationSchema = {EditSchema}
 
 			onSubmit = {(values, actions) => {
-				
-				let url = config[0].apiURL + 'product/update.php'
+				let url = config[0].apiURL + 'category/update.php'
 				actions.setSubmitting(false)
 
-				actions.setStatus({successMessage: 'The product has successfully updated.'})
+				actions.setStatus({successMessage: 'The category has successfully updated.'})
 			
 				async function makePostRequest() {
 
 					var params = {
 						id: values.id,
 						name: values.name,
-						price: values.price,
 						description: values.description,
-						category_id: values.category_id,
 					}
 
 					await axios.post(url, params, actions).catch(err => { 
+					
 						let statusMessage 
 						if (err.response) {
 							statusMessage = 'Something went wrong. Please, try it later.'
@@ -126,25 +102,10 @@ const ProductEditDetails = (props) => (
 						</div>
 					</div>
 					<div className="bar-flex">
-						<div><label htmlFor="price">Price:</label></div>
-						<div>
-							<Field name="price" id="price" onBlur={e => {props.setStatus({successMessage: null}) }} />
-							<ErrorMessage name="price" component="div" className="error-message-form" />
-						</div>
-					</div>
-					<div className="bar-flex">
 						<div><label htmlFor="description">Description:</label></div>
 						<div>
 							<Field component="textarea" name="description" id="description" />
 							<ErrorMessage name="description" component="div" className="error-message-form" onBlur={e => {props.setStatus({successMessage: null}) }} />
-						</div>
-					</div>
-					<div className="bar-flex">
-						<div><label htmlFor="category_id">Category:</label></div>
-						<div>
-							<Field as="select" name="category_id" id="category_id" onBlur={e => {props.setStatus({successMessage: null}) }} >
-								<Categories categoriesData={props.values.categories} />
-							</Field>
 						</div>
 					</div>
 
@@ -173,4 +134,4 @@ const ProductEditDetails = (props) => (
     </div>
  )
 
-export default ProductEditDetails
+export default CategoryEditForm

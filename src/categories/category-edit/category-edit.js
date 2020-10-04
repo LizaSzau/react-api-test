@@ -3,15 +3,21 @@ import axios from 'axios'
 import {trackPromise} from 'react-promise-tracker'
 import {config} from '../../config'
 import StatusMessage from '../../main/statusMessage.jsx'
-import ProductNewForm from './product-new-form.jsx'
+import CategoryEditForm from './category-edit-form.jsx'
 import '../../main/sass-common/edit.sass'
 
-class ProductNew extends Component {
+class CategoryEdit extends Component {
 
 	constructor(){
 		super()
 
 		this.state = {
+			id: '',
+			name: '',
+			description: '',
+			price: '',
+			category_id: '',
+			category_name: '',
 			categories: [],
 			statusMessage: '',
 		}
@@ -22,21 +28,28 @@ class ProductNew extends Component {
 // ****************************************************************************
 
 	componentDidMount () {
-		let url_categories = config[0].apiURL + 'category/read.php'
-		this.getCategoriesList(url_categories)
+		const {id} = this.props.match.params
+		let url = config[0].apiURL + 'category/read_one.php?id=' + id
+		this.geCategoryDetails(url)
 	}
 	
 // ****************************************************************************
-// GetCategoriesList
+// GetCategoryDetails
 // ****************************************************************************
 
-	getCategoriesList = (url) => {
+	geCategoryDetails = (url) => {
 		trackPromise(
 			axios.get(url)
 				.then(res => {
-					const categories = res.data.records
+					const id = res.data.id
+					const name = res.data.name
+					const description = res.data.description
 					this.setState ({
-						categories: categories,
+						id: id,
+						name: name,
+						description: description,
+						statusMessage: '',
+						isError: false,
 					})
 			})
 			.catch(err => { 
@@ -76,25 +89,26 @@ class ProductNew extends Component {
 
     render() {
         const {statusMessage} = this.state
-		const categories = this.state.categories
+		const values = this.state
 
-		let product
+		let category
 
 		if (this.state.isError) {
-			product = <StatusMessage statusMessage={statusMessage} messageType="message error" />
+			category = <StatusMessage statusMessage={statusMessage} messageType="message error" />
 		} else {
-			product = <ProductNewForm categories={categories} handleSubmitEdit={this.handleSubmitEdit} />
+			category = <CategoryEditForm values={values} handleSubmitEdit={this.handleSubmitEdit} />
 		}
 	
         return (
             <div className="container-main">
-                <h1>New product</h1>
+                <h1>Edit category</h1>
 				<div className="container">
-					{product}
+					{category}
 				</div>
             </div>
         )
 	}
+
 }
 
-export default ProductNew
+export default CategoryEdit
