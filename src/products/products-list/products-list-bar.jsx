@@ -1,4 +1,5 @@
 import React from "react";
+import {NavLink} from 'react-router-dom'
 
 const Bar = (props) => {
 	const {handleSubmitSearch} = props
@@ -30,7 +31,9 @@ const BarSearch = (props) => {
 const BarNew = () => {
 	return (
 		<div>
-			<button><i className="fas fa-plus-circle"></i> Add new product</button>
+			<NavLink to={'/product/new/'}>
+				<button><i className="fas fa-plus-circle"></i> Add new product</button>
+			</NavLink>
 		</div>
 	)
 }

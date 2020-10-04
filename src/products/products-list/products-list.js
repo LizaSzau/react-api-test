@@ -65,7 +65,6 @@ class ProductsList extends Component {
 				let statusMessage 
 				
 				if (err.response) {
-					// client received an error response (5xx, 4xx)
 					if (err.response.status === 404) {
 						statusMessage = 'No products found.'
 					} else {
@@ -175,9 +174,10 @@ class ProductsList extends Component {
 
 		makePostRequest()
 				
-		if (sessionStorage.getItem("url")) {
-			url = sessionStorage.getItem("url")
-			const n = url.search('&');
+		if (sessionStorage.getItem('url')) {
+			url = sessionStorage.getItem('url')
+			const n = url.search('&')
+			
 			if (n !== -1) {
 				url = url.substring(0, n)
 			}

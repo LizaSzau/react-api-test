@@ -58,7 +58,7 @@ const EditSchema = Yup.object().shape({
 // ProductEditDetails
 // ****************************************************************************
 
-const ProductEditDetails = (props) => (
+const ProductEditForm = (props) => (
  
 	<div className={"container-product-edit-details"}>
 		<LoadingIndicator/>
@@ -82,7 +82,9 @@ const ProductEditDetails = (props) => (
 				
 				let url = config[0].apiURL + 'product/update.php'
 				actions.setSubmitting(false)
-				actions.setStatus="SENT";
+
+				actions.setStatus({successMessage: 'The product has successfully updated.'})
+			
 				async function makePostRequest() {
 
 					var params = {
@@ -93,7 +95,7 @@ const ProductEditDetails = (props) => (
 						category_id: values.category_id,
 					}
 
-					await axios.post(url, params).catch(err => { 
+					await axios.post(url, params, actions).catch(err => { 
 						let statusMessage 
 						if (err.response) {
 							statusMessage = 'Something went wrong. Please, try it later.'
@@ -102,47 +104,66 @@ const ProductEditDetails = (props) => (
 						} else {
 							statusMessage = 'Something went wrong. Please, try it later.'
 						}
+						
+						actions.setStatus({errorMessage: statusMessage})
 					})
 				}
 
 				makePostRequest()
 			}}
+
 		>
 
 			{props  => (
 		
 				<form onSubmit={props.handleSubmit}>
-					{console.log(props)}
+					
 					<div className="bar-flex">
 						<div><label htmlFor="name">Name:</label></div>
 						<div>
-							<Field name="name" id="name" maxLength="32"/>
-							<ErrorMessage name="name" component="div" className="error-message-form" />
+							<Field name="name" id="name" maxLength="32" />
+							<ErrorMessage name="name" component="div" className="error-message-form" onBlur={e => {props.setStatus({successMessage: null}) }} />
 						</div>
 					</div>
 					<div className="bar-flex">
 						<div><label htmlFor="price">Price:</label></div>
 						<div>
 							<Field name="price" id="price" />
-							<ErrorMessage name="price" component="div" className="error-message-form" />
+							<ErrorMessage name="price" component="div" className="error-message-form" onBlur={e => {props.setStatus({successMessage: null}) }} />
 						</div>
 					</div>
 					<div className="bar-flex">
 						<div><label htmlFor="description">Description:</label></div>
 						<div>
 							<Field component="textarea" name="description" id="description" />
-							<ErrorMessage name="description" component="div" className="error-message-form" />
+							<ErrorMessage name="description" component="div" className="error-message-form" onBlur={e => {props.setStatus({successMessage: null}) }} />
 						</div>
 					</div>
 					<div className="bar-flex">
 						<div><label htmlFor="category_id">Category:</label></div>
 						<div>
-							<Field as="select" name="category_id" id="category_id">
+							<Field as="select" name="category_id" id="category_id" onBlur={e => {props.setStatus({successMessage: null}) }} >
 								<Categories categoriesData={props.values.categories} />
 							</Field>
 						</div>
 					</div>
-						
+
+					{props.status && props.status.errorMessage &&
+						<div>
+							<div className="error-message-form ">
+								{props.status.errorMessage}
+							</div>
+						</div>
+					}
+					  
+					{props.status && props.status.successMessage &&
+						<div>
+							<div className="success-message-form ">
+								{props.status.successMessage}
+							</div>
+						</div>
+					}
+					
 					<Buttons />
 			 </form>
 			 
@@ -152,4 +173,4 @@ const ProductEditDetails = (props) => (
     </div>
  )
 
-export default ProductEditDetails
+export default ProductEditForm
