@@ -84,7 +84,7 @@ const ProductNewForm = (props) => (
 				let url = config[0].apiURL + 'product/create.php'
 				actions.setSubmitting(false)
 
-				actions.setStatus({successMessage: 'The ' + values.name + ' has successfully added.'})
+				actions.setStatus({successMessage: 'The product has successfully added.'})
 			
 				async function makePostRequest() {
 
@@ -94,7 +94,7 @@ const ProductNewForm = (props) => (
 						description: values.description,
 						category_id: values.category_id,
 					}
-				
+
 					await axios.post(url, params, actions).catch(err => { 
 						let statusMessage 
 						if (err.response) {
@@ -111,7 +111,6 @@ const ProductNewForm = (props) => (
 
 				makePostRequest()
 			}}
-
 		>
 
 			{props  => (

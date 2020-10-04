@@ -95,10 +95,8 @@ class Category{
 	function create(){
 	  
 		// query to insert record
-		$query = "INSERT INTO
-					" . $this->table_name . "
-				SET
-					name=:name, description=:description";
+		$query = "INSERT INTO ".$this->table_name." 
+				SET name = :name, description = :description, created = :created";
 	 
 		// prepare query
 		$stmt = $this->conn->prepare($query);
@@ -112,7 +110,7 @@ class Category{
 		$stmt->bindParam(":name", $this->name);
 		$stmt->bindParam(":description", $this->description);
 		$stmt->bindParam(":created", $this->created);
-	  
+
 		// execute query
 		if($stmt->execute()){
 			return true;

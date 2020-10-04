@@ -5,19 +5,19 @@ header("Content-Type: application/json; charset=UTF-8");
 header("Access-Control-Allow-Methods: POST");
 header("Access-Control-Max-Age: 3600");
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
-
-// get database connection
-include_once '../config/database.php';
   
-// instantiate category object
+// include database and object files
+include_once '../config/database.php';
 include_once '../objects/category.php';
-		
+  
+// get database connection
 $database = new Database();
 $db = $database->getConnection();
   
+// prepare category object
 $category = new Category($db);
   
-// get posted data
+// get id of category to be edited
 $data = json_decode(file_get_contents("php://input"));
 
 // make sure data is not empty
@@ -26,12 +26,9 @@ if(
     !empty($data->name) &&
     !empty($data->description)
 ){
-  
     // set category property values
     $category->name = $data->name;
-    $category->price = $data->price;
     $category->description = $data->description;
-    $category->category_id = $data->category_id;
     $category->created = date('Y-m-d H:i:s');
 		
     // create the category
